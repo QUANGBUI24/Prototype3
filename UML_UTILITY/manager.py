@@ -141,10 +141,3 @@ def get_chosen_class(class_name: str) -> dict[str, list[dict[str, str]]]:
 
 
 ################################################################################
-
-# add_class("123chicken")
-# # rename_class("chicken", "111person")
-
-# for ele in class_and_attr_list:
-#     print(ele)
-#     print()
