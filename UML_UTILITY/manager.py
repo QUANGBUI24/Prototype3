@@ -28,14 +28,8 @@ class_and_attr_list = data_list[0]
 
 # Add Class #
 def add_class(class_name: str):
-    # Check class_name format
-    result = check_format(class_name)
-    if result != "Valid input":
-        # If not valid, prompt error
-        print(result)
-        return
     # After checking format, check if class_name already existed or not
-    is_name_exist = check_class_name_exist(class_name, should_exist=False)
+    is_name_exist = check_class_name(class_name, should_exist=False)
     # If not, prompt error
     if not is_name_exist:
         return
@@ -47,14 +41,8 @@ def add_class(class_name: str):
 
 # Delete Class #
 def delete_class(class_name: str):
-    # Check class_name format
-    result = check_format(class_name)
-    if result != "Valid input":
-        # If not valid, prompt error
-        print(result)
-        return
     # After checking format, check if class_name already existed or not
-    is_name_exist = check_class_name_exist(class_name, should_exist=True)
+    is_name_exist = check_class_name(class_name, should_exist=True)
     # If not, prompt error
     if not is_name_exist:
         return
@@ -90,7 +78,11 @@ def validate_class_name(class_name: str):
 
 
 # Check Class Name Exist Including Prompting Error Messages #
-def check_class_name_exist(class_name: str, should_exist: bool) -> bool:
+def check_class_name(class_name: str, should_exist: bool) -> bool:
+    is_format_correct = check_format(class_name)
+    if is_format_correct != "Valid input":
+        print(is_format_correct)
+        return False
     is_name_exist: bool = validate_class_name(class_name)
     # If the name should exist but not exist
     if should_exist and not is_name_exist:
@@ -119,10 +111,10 @@ def is_able_to_rename(class_name: str, new_name: str) -> bool:
         print(new_class_name_result)
         return False
     # After checking format, check if class_name and new_name already existed or not
-    is_current_name_exist = check_class_name_exist(class_name, should_exist=True)
+    is_current_name_exist = check_class_name(class_name, should_exist=True)
     if not is_current_name_exist:
         return False
-    is_new_name_exist = check_class_name_exist(new_name, should_exist=False)
+    is_new_name_exist = check_class_name(new_name, should_exist=False)
     if not is_new_name_exist:
         return False
     return True
@@ -133,6 +125,7 @@ def is_able_to_rename(class_name: str, new_name: str) -> bool:
 
 
 # Get JSON Format #
+# NOTE: Don't call this class if you did not check for class name!!!!!!! #
 def get_class_json_format(class_name: str) -> dict[str, list[dict[str, str]]]:
     return {
         "attr_list": [{"attr_name": ""}],  # Placeholder for attribute names
@@ -148,3 +141,10 @@ def get_chosen_class(class_name: str) -> dict[str, list[dict[str, str]]]:
 
 
 ################################################################################
+
+# add_class("123chicken")
+# # rename_class("chicken", "111person")
+
+# for ele in class_and_attr_list:
+#     print(ele)
+#     print()
