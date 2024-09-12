@@ -3,10 +3,13 @@
         {
             "attr_list": [
                 {
-                    "attr_name": "heart"
+                    "attr_name": "heart",
+                    "attr_name2": "age",
+                    "attr_name3": "health",
+                    "attr_name4": "name"
                 }
             ],
-            "class_name": "person"
+            "class_name": "Person"
         },
         {
             "attr_list": [
@@ -39,6 +42,14 @@
                 }
             ],
             "class_name": "Shape"
+        },
+        {
+            "attr_list": [
+                {
+                    "attr_name": ""
+                }
+            ],
+            "class_name": "Animal"
         }
     ],
     [

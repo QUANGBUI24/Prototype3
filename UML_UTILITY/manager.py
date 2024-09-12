@@ -8,14 +8,21 @@
 
 ################################################################
 # IMPORTED MODULES #
-# Import file from validators.py to use check_format(name: str)
-from save_load import load_data_from_json, save_data_from_json
-from validators import check_format
+import os
+import sys
+
+# Add the project root directory to sys.path (ChatGPT instruction)
+sys.path.append(
+    os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+)  # This must be placed first before importing
+
+import UML_UTILITY.save_load as SAVE_LOAD
+from UML_UTILITY.validators import check_format
 
 ################################################################
 
 # LOADING DATA FROM JSON FILE TO GLOBAL DICTIONARY #
-data_list = load_data_from_json("data.json")
+data_list = SAVE_LOAD.load_data_from_json("data.json")
 
 # GET THE LIST OF DICTIONARY OF CLASS NAME AND ITS ATTRIBUTE #
 if data_list[0] is not None:
@@ -143,12 +150,35 @@ def get_chosen_class(class_name: str) -> dict[str, list[dict[str, str]]]:
             return dictionary
 
 
+# Display Class List #
+def display_class_list():
+    print("\n===================")
+    print("--Class List--")
+    for dictionary in class_and_attr_list:
+        print(dictionary["class_name"])
+    print("===================")
+
+
+# Display Class Details #
+def display_class_detail(class_name: str):
+    class_object = get_chosen_class(class_name)
+    print("\n===================")
+    print("--Class Name--")
+    print(f"{class_object['class_name']}")  # Center with 20 spaces
+    print("*******************")
+    attr_list = class_object["attr_list"]
+    print("--Class Attribute--")
+    for element in attr_list:
+        for key, val in element.items():
+            print(f"{val}")
+    print("===================")
+
+
 ################################################################################
 
 
-add_class("Shape")
-add_class("Animal")
-add_class("House")
-rename_class("Shape", "Tree")
-delete_class("Animal")
-save_data_from_json(data_list, "data.json")
+# add_class("Shape")
+# add_class("Animal")
+# add_class("House")
+# rename_class("Shape", "Tree")
+# SAVE_LOAD.save_data_from_json(data_list, "data.json")
