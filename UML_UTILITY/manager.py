@@ -9,7 +9,7 @@
 ################################################################
 # IMPORTED MODULES #
 # Import file from validators.py to use check_format(name: str)
-from save_load import load_data_from_json
+from save_load import load_data_from_json, save_data_from_json
 from validators import check_format
 
 ################################################################
@@ -144,3 +144,11 @@ def get_chosen_class(class_name: str) -> dict[str, list[dict[str, str]]]:
 
 
 ################################################################################
+
+
+add_class("Shape")
+add_class("Animal")
+add_class("House")
+rename_class("Shape", "Tree")
+delete_class("Animal")
+save_data_from_json(data_list, "data.json")
