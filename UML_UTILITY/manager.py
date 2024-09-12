@@ -141,5 +141,3 @@ def get_chosen_class(class_name: str) -> dict[str, list[dict[str, str]]]:
 
 
 ################################################################################
-
-
