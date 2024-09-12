@@ -28,41 +28,47 @@ class_and_attr_list = data_list[0]
 
 # Add Class #
 def add_class(class_name: str):
+    standard_name = class_name.lower()
     # After checking format, check if class_name already existed or not
-    is_name_exist = check_class_name(class_name, should_exist=False)
+    is_name_exist = check_class_name(standard_name, should_exist=False)
     # If not, prompt error
     if not is_name_exist:
         return
     # Convert to json object and append to the list
-    transformed_json_object = get_class_json_format(class_name)
+    transformed_json_object = get_class_json_format(standard_name)
     class_and_attr_list.append(transformed_json_object)
-    print(f"Added class '{class_name}' successfully!")
+    print(f"Added class '{standard_name}' successfully!")
 
 
 # Delete Class #
 def delete_class(class_name: str):
+    standard_name = class_name.lower()
     # After checking format, check if class_name already existed or not
-    is_name_exist = check_class_name(class_name, should_exist=True)
+    is_name_exist = check_class_name(standard_name, should_exist=True)
     # If not, prompt error
     if not is_name_exist:
         return
     # If class exist, get the class object and pop from the list
-    class_object = get_chosen_class(class_name)
+    class_object = get_chosen_class(standard_name)
     class_and_attr_list.remove(class_object)
-    print(f"Successfully removed class '{class_name}'!")
+    print(f"Successfully removed class '{standard_name}'!")
 
 
 # Rename Class #
 def rename_class(class_name: str, new_name: str):
+    standard_class_name = class_name.lower()
+    standard_new_class_name = new_name.lower()
     # If class exist, remove the class, else prompt error'
-    able_to_rename = is_able_to_rename(class_name, new_name)
+    able_to_rename = is_able_to_rename(standard_class_name, standard_new_class_name)
     if not able_to_rename:
         return
     # If it is able to rename, get the object from the list
     class_object = get_chosen_class(class_name)
     # Change to new name
     class_object["class_name"] = new_name
-    print(f"Successfully changed class name from '{class_name}' to '{new_name}'!")
+    print(
+        f"Successfully changed class name from '{standard_class_name}' to '{standard_new_class_name}'!"
+    )
 
 
 ################################################################################

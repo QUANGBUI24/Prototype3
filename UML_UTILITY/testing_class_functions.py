@@ -24,6 +24,10 @@ MANAGER.add_class(
     "123Chicken"
 )  # Expected: Print error message due to invalid name format
 
+# Test Case 4: Add a class with uppercase valid name format
+print("Test Case 4: Add a class with uppercase valid name format 'PLANET'")
+MANAGER.add_class("PLANET")  # Expected: Successfully adds the class "planet"
+
 ######################################################################
 # Test Delete Class All Cases #
 print("\n=== Testing Delete Class Functionality ===")
