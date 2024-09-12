@@ -18,7 +18,10 @@ from validators import check_format
 data_list = load_data_from_json("data.json")
 
 # GET THE LIST OF DICTIONARY OF CLASS NAME AND ITS ATTRIBUTE #
-class_and_attr_list = data_list[0]
+if data_list[0] is not None:
+    class_and_attr_list = data_list[0]
+else:
+    print("Something's wrong with the data.json file!!!!")
 
 # print(type(class_and_attr_list))
 
