@@ -16,6 +16,7 @@ from UML_UTILITY.validators import check_format
 
 # LOADING DATA FROM JSON FILE TO GLOBAL DICTIONARY #
 data_list = SAVE_LOAD.load_data_from_json("data.json")
+# Create a class so that we can display it or sort it alphabetically
 class_list: list[str ]= []
 # If there is no data in json file
 if data_list is None:
