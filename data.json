@@ -3,45 +3,10 @@
         {
             "attr_list": [
                 {
-                    "attr_name": "heart",
-                    "attr_name2": "age",
-                    "attr_name3": "health",
-                    "attr_name4": "name"
+                    "attr_name": ""
                 }
             ],
             "class_name": "Person"
-        },
-        {
-            "attr_list": [
-                {
-                    "attr_name": "4 legs"
-                }
-            ],
-            "class_name": "dog"
-        },
-        {
-            "attr_list": [
-                {
-                    "attr_name": ""
-                }
-            ],
-            "class_name": "Tree"
-        },
-        {
-            "attr_list": [
-                {
-                    "attr_name": ""
-                }
-            ],
-            "class_name": "House"
-        },
-        {
-            "attr_list": [
-                {
-                    "attr_name": ""
-                }
-            ],
-            "class_name": "Shape"
         },
         {
             "attr_list": [
@@ -50,26 +15,7 @@
                 }
             ],
             "class_name": "Animal"
-        },
-        {
-            "attr_list": [
-                {
-                    "attr_name": ""
-                }
-            ],
-            "class_name": "Universe"
         }
     ],
-    [
-        {
-            "dest": "dog",
-            "relation": "pet",
-            "source": "person"
-        },
-        {
-            "dest": "person",
-            "relation": "owner",
-            "source": "dog"
-        }
-    ]
+    []
 ]

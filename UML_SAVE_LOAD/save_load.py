@@ -2,7 +2,7 @@ import json
 
 
 # Save data to the JSON file
-def save_data_from_json(data: dict[str, list[dict[str, str]]], file_path: str):
+def save_data_from_json(data: dict[str, list[str]], file_path: str):
     try:
         with open(file_path, "w") as file:
             json.dump(data, file, indent=4)

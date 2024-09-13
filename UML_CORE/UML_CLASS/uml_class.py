@@ -16,9 +16,11 @@ from UML_UTILITY.validators import check_format
 
 # LOADING DATA FROM JSON FILE TO GLOBAL DICTIONARY #
 data_list = SAVE_LOAD.load_data_from_json("data.json")
-
+# If there is no data in json file
+if data_list is None:
+    data_list = [[],[]]
 # GET THE LIST OF DICTIONARY OF CLASS NAME AND ITS ATTRIBUTE #
-class_and_attr_list = data_list[0]
+class_and_attr_list = data_list[0]  # Provides an empty list if "classes" key is missing
 
 # print(type(class_and_attr_list))
 
