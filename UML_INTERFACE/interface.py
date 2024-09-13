@@ -82,10 +82,10 @@ def working_loop():
         second_param = (
             user_input_component[2] if len(user_input_component) > 2 else None
         )
-        third_param = user_input_component[3] if len(user_input_component) > 3 else None
-        fourth_param = (
-            user_input_component[4] if len(user_input_component) > 4 else None
-        )
+        # third_param = user_input_component[3] if len(user_input_component) > 3 else None
+        # fourth_param = (
+        #     user_input_component[4] if len(user_input_component) > 4 else None
+        # )
         # Start the logic
         #######################################################
         # Add class
