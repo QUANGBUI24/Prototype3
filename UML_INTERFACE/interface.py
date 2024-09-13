@@ -1,7 +1,7 @@
 from enum import Enum
 
-import UML_UTILITY.manager as UML_MANAGER
-import UML_UTILITY.save_load as SAVE_LOAD
+import UML_CORE.UML_CLASS.uml_class as UML_MANAGER
+import UML_SAVE_LOAD.save_load as SAVE_LOAD
 
 
 class InterfaceOptions(Enum):
@@ -81,11 +81,10 @@ def working_loop():
         second_param = (
             user_input_component[2] if len(user_input_component) > 2 else None
         )
-        # third_param = user_input_component[3] if len(user_input_component) > 3 else None
-        # fourth_param = (
-        #     user_input_component[4] if len(user_input_component) > 4 else None
-        # )
-
+        third_param = user_input_component[3] if len(user_input_component) > 3 else None
+        fourth_param = (
+            user_input_component[4] if len(user_input_component) > 4 else None
+        )
         # Start the logic
         #######################################################
         # Add class
@@ -185,7 +184,6 @@ def main_program_loop():
         user_input: str = input()
         # Split the input by space
         user_input_component = user_input.split()
-
         command = user_input_component[0]
         # Check if command has an associated class name
         first_param = user_input_component[1] if len(user_input_component) > 1 else None
@@ -194,10 +192,10 @@ def main_program_loop():
             working_loop()
         # # List all the created class names
         elif command == InterfaceOptions.LIST_CLASS.value:
-            UML_MANAGER.display_class_list()
+            display_class_list()
         # # Show the details of the chosen class
         elif command == InterfaceOptions.CLASS_DETAIL.value and first_param:
-            UML_MANAGER.display_class_detail(first_param)
+            display_class_detail(first_param)
         #######################################################
         # # Show the relationship of the chosen class with others
         # elif command == InterfaceOptions.CLASS_REL.value and first_param:
@@ -234,3 +232,28 @@ def help():
 
 def exit():
     print("Exited Program")
+    
+########################################################################################################
+
+# Display Class List #
+def display_class_list():
+    print("\n===================")
+    print("--Class List--")
+    for dictionary in UML_MANAGER.class_and_attr_list:
+        print(dictionary["class_name"])
+    print("===================")
+
+
+# Display Class Details #
+def display_class_detail(class_name: str):
+    class_object = UML_MANAGER.get_chosen_class(class_name)
+    print("\n===================")
+    print("--Class Name--")
+    print(f"{class_object['class_name']}")  # Center with 20 spaces
+    print("*******************")
+    attr_list = class_object["attr_list"]
+    print("--Class Attribute--")
+    for element in attr_list:
+        for key, val in element.items():
+            print(f"{val}")
+    print("===================")

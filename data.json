@@ -50,6 +50,14 @@
                 }
             ],
             "class_name": "Animal"
+        },
+        {
+            "attr_list": [
+                {
+                    "attr_name": ""
+                }
+            ],
+            "class_name": "Universe"
         }
     ],
     [
