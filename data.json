@@ -6,7 +6,7 @@
                     "attr_name": ""
                 }
             ],
-            "class_name": "PingPong"
+            "class_name": "Person"
         },
         {
             "attr_list": [
@@ -15,14 +15,6 @@
                 }
             ],
             "class_name": "Animal"
-        },
-        {
-            "attr_list": [
-                {
-                    "attr_name": ""
-                }
-            ],
-            "class_name": "Person"
         }
     ],
     []

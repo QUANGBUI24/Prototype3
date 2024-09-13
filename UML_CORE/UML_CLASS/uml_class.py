@@ -21,11 +21,12 @@ class_list: list[str ]= []
 # If there is no data in json file
 if data_list is None:
     data_list = [[],[]]
-else:
-    # GET THE LIST OF DICTIONARY OF CLASS NAME AND ITS ATTRIBUTE #
-    class_and_attr_list = data_list[0]  # Provides an empty list if "classes" key is missing
-    for dictionary in class_and_attr_list:
-        class_list.append(dictionary["class_name"])
+# Provides an empty list if "classes" key is missing
+class_and_attr_list = data_list[0]  
+# Add class name to class_list
+for dictionary in class_and_attr_list:
+    class_list.append(dictionary["class_name"])
+    
 
 
 
@@ -57,6 +58,7 @@ def delete_class(class_name: str):
     # If class exist, get the class object and pop from the list
     class_object = get_chosen_class(class_name)
     class_and_attr_list.remove(class_object)
+    class_list.remove(class_name)
     print(f"Successfully removed class '{class_name}'!")
 
 
@@ -70,6 +72,8 @@ def rename_class(class_name: str, new_name: str):
     class_object = get_chosen_class(class_name)
     # Change to new name
     class_object["class_name"] = new_name
+    class_list.remove(class_name)
+    class_list.append(new_name)
     print(f"Successfully changed class name from '{class_name}' to '{new_name}'!")
 
 
