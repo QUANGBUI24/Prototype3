@@ -6,6 +6,7 @@
 ################################################################
 
 from enum import Enum
+from itertools import zip_longest
 
 import UML_CORE.UML_CLASS.uml_class as UML_MANAGER
 import UML_UTILITY.SAVE_LOAD.save_load as SAVE_LOAD
@@ -201,27 +202,51 @@ def exit():
 
 
 # Display Class List #
-def display_class_list():
-    print("\n===================")
-    print("--Class List--")
-    for class_name in UML_MANAGER.class_list:
-        print(class_name)
-    print("===================")
+def display_class_list(classes_per_row=3):
+    # Generate class details split into lines
+    class_details_list = [
+        get_class_detail(class_name).split("\n")
+        for class_name in UML_MANAGER.class_list
+    ]
+    print(
+        "\n-------------------------------------------------------------------------------------------------\n"
+    )
+    # Chunk the class details into groups of `classes_per_row`
+    for i in range(0, len(class_details_list), classes_per_row):
+        chunk = class_details_list[i : i + classes_per_row]
+
+        # Use zip_longest to align and print side by side
+        for lines in zip_longest(*chunk, fillvalue=" " * 20):
+            print("   ".join(line.ljust(30) for line in lines))
+        print(
+            "\n-------------------------------------------------------------------------------------------------\n"
+        )
 
 
 # Display Class Details #
 def display_class_detail(class_name: str):
+    classes_detail_list = get_class_detail(class_name)
+    print(classes_detail_list)
+
+
+# Class Detail As String #
+def get_class_detail(class_name: str) -> str:
     class_object = UML_MANAGER.get_chosen_class(class_name)
-    print("\n===================")
-    print("--Class Name--")
-    print(f"{class_object['class_name']}")  # Center with 20 spaces
-    print("*******************")
+    output = []
+    output.append("|===================|")
+    output.append(f"{"--Class Name--":^21}")
+    output.append(f"{class_object['class_name']:^20}")
+    output.append("|*******************|")
     attr_list = class_object["attr_list"]
-    print("--Class Attribute--")
+    output.append(f"{"--Class Attribute--":^21}")
     for element in attr_list:
         for key, val in element.items():
-            print(f"{val}")
-    print("===================")
+            output.append(f"{val:^20}")
+    output.append("|*******************|")
+    
+    output.append("|===================|")
+    # https://www.geeksforgeeks.org/python-string-join-method/
+    return "\n".join(output)
 
 
 # Sorting Class List #

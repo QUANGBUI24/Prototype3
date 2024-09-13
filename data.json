@@ -1,0 +1,32 @@
+[
+    [
+        {
+            "attr_list": [
+                {
+                    "attr_name": "heart"
+                }
+            ],
+            "class_name": "Person"
+        },
+        {
+            "attr_list": [
+                {
+                    "attr_name": "4 legs"
+                }
+            ],
+            "class_name": "Dog"
+        }
+    ],
+    [
+        {
+            "dest": "Dog",
+            "relation": "pet",
+            "source": "Person"
+        },
+        {
+            "dest": "Person",
+            "relation": "owner",
+            "source": "Dog"
+        }
+    ]
+]
