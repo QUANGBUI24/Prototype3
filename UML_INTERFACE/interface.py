@@ -3,13 +3,13 @@ from enum import Enum
 import UML_CORE.UML_CLASS.uml_class as UML_MANAGER
 import UML_SAVE_LOAD.save_load as SAVE_LOAD
 
-
 class InterfaceOptions(Enum):
     WORK = "work"
     LIST_CLASS = "list_class"
     CLASS_DETAIL = "class_detail"
     CLASS_REL = "class_rel"
     SAVE = "save"
+    SORT = "sort"
     SHOW_MENU = "show_menu"
     HELP = "help"
     EXIT = "exit"
@@ -37,6 +37,7 @@ def prompt_main_menu():
         "Type 'class_rel <class_name>' to see the relationships between the chosen class and other class(es)"
     )
     print("Type 'save' to save data")
+    print("Type 'sort' to sort the class list in alphabetical order")
     print("Type 'show_menu' to see the menu again")
     print("Type 'help' to see the instructions")
     print("Type 'exit' to quit program")
@@ -165,7 +166,6 @@ def working_loop():
         # See menu again
         elif command == UMLClassInterfaceOption.SHOW_MENU.value:
             prompt_working_menu()
-
         #######################################################
         # Go back to main menu
         elif command == UMLClassInterfaceOption.BACK.value:
@@ -204,6 +204,9 @@ def main_program_loop():
         # Show the instructions for this program
         elif command == InterfaceOptions.HELP.value:
             help()
+        # Sort the class list
+        elif command == InterfaceOptions.SORT.value:
+            sort_class_list()
         # Save the data
         elif command == InterfaceOptions.SAVE.value:
             SAVE_LOAD.save_data_from_json(UML_MANAGER.data_list, "data.json")
@@ -239,8 +242,8 @@ def exit():
 def display_class_list():
     print("\n===================")
     print("--Class List--")
-    for dictionary in UML_MANAGER.class_and_attr_list:
-        print(dictionary["class_name"])
+    for class_name in UML_MANAGER.class_list:
+        print(class_name)
     print("===================")
 
 
@@ -257,3 +260,9 @@ def display_class_detail(class_name: str):
         for key, val in element.items():
             print(f"{val}")
     print("===================")
+    
+# Sorting Class List #
+def sort_class_list():
+    UML_MANAGER.class_list.sort()
+    display_class_list()
+    
