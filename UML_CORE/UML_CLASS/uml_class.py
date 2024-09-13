@@ -9,25 +9,23 @@
 ################################################################
 # IMPORTED MODULES #
 
-import UML_SAVE_LOAD.save_load as SAVE_LOAD
-from UML_UTILITY.validators import check_format
+import UML_UTILITY.SAVE_LOAD.save_load as SAVE_LOAD
+from UML_UTILITY.FORMAT_CHECKING.validators import check_format
 
 ################################################################
 
 # LOADING DATA FROM JSON FILE TO GLOBAL DICTIONARY #
 data_list = SAVE_LOAD.load_data_from_json("data.json")
-# Create a class so that we can display it or sort it alphabetically
-class_list: list[str ]= []
+# Create a class so that we can display it or sort it alphabetically easily
+class_list: list[str] = []
 # If there is no data in json file
 if data_list is None:
-    data_list = [[],[]]
+    data_list = [[], []]
 # Provides an empty list if "classes" key is missing
-class_and_attr_list = data_list[0]  
+class_and_attr_list = data_list[0]
 # Add class name to class_list
 for dictionary in class_and_attr_list:
     class_list.append(dictionary["class_name"])
-    
-
 
 
 ################################################################################
@@ -37,9 +35,13 @@ for dictionary in class_and_attr_list:
 # Add Class #
 def add_class(class_name: str):
     # After checking format, check if class_name already existed or not
-    is_name_exist = check_class_name(class_name, should_exist=False)
     # If not, prompt error
+    is_name_exist = check_class_name(class_name, should_exist=False)
     if not is_name_exist:
+        return
+    # Make sure user want to add or not
+    is_chosen_yes = user_choice(class_name)
+    if not is_chosen_yes:
         return
     # Convert to json object and append to the list
     transformed_json_object = get_class_json_format(class_name)
@@ -51,8 +53,8 @@ def add_class(class_name: str):
 # Delete Class #
 def delete_class(class_name: str):
     # After checking format, check if class_name already existed or not
-    is_name_exist = check_class_name(class_name, should_exist=True)
     # If not, prompt error
+    is_name_exist = check_class_name(class_name, should_exist=True)
     if not is_name_exist:
         return
     # If class exist, get the class object and pop from the list
@@ -150,6 +152,21 @@ def get_chosen_class(class_name: str) -> dict[str, list[dict[str, str]]]:
     for dictionary in class_and_attr_list:
         if dictionary["class_name"] == class_name:
             return dictionary
+
+
+# User Decision Making For "add_class()" Function #
+def user_choice(class_name: str) -> bool:
+    while True:
+        user_input = input(
+            f"Are you sure you want to add class '{class_name}'? (Yes/No): "
+        ).lower()
+        if user_input in ["yes", "y"]:
+            return True
+        elif user_input in ["no", "n"]:
+            print("Action cancelled.")
+            return False
+        else:
+            print("Invalid input. Please enter 'Yes' or 'No'.")
 
 
 ################################################################################

@@ -1,7 +1,15 @@
+################################################################
+#   Author : Quang Bui
+#   Created: September 12, 2024
+#
+#   This file is for the CLI
+################################################################
+
 from enum import Enum
 
 import UML_CORE.UML_CLASS.uml_class as UML_MANAGER
-import UML_SAVE_LOAD.save_load as SAVE_LOAD
+import UML_UTILITY.SAVE_LOAD.save_load as SAVE_LOAD
+
 
 class InterfaceOptions(Enum):
     WORK = "work"
@@ -103,64 +111,16 @@ def working_loop():
             UML_MANAGER.rename_class(first_param, second_param)
 
         #######################################################
-        #######################################################
-        # # Add attribute
-        # elif (
-        #     command == UMLClassInterfaceOption.ADD_ATTR.value
-        #     and first_param
-        #     and second_param
-        # ):
-        #     # Only class_name and attr_name provided
-        #     if third_param is None and fourth_param is None:
-        #         UML_MANAGER.add_attribute(first_param, second_param)
-        #     # Only class_name, attr_name, and data_type provided
-        #     elif third_param is None:
-        #         UML_MANAGER.add_attribute(first_param, second_param, "", fourth_param)
-        #     # Only class_name, attr_name, and access_specifier provided
-        #     elif fourth_param is None:
-        #         UML_MANAGER.add_attribute(first_param, second_param, third_param)
-        #     # Full attribute detail
-        #     else:
-        #         UML_MANAGER.add_attribute(
-        #             first_param, second_param, third_param, fourth_param
-        #         )
 
-        # # Delete attribute
-        # elif (
-        #     command == UMLClassInterfaceOption.DELETE_ATTR.value
-        #     and first_param
-        #     and second_param
-        # ):
-        #     UML_MANAGER.delete_attribute(first_param, second_param)
-        # # Rename attribute
-        # elif (
-        #     command == UMLClassInterfaceOption.RENAME_ATTR.value
-        #     and first_param
-        #     and second_param
-        #     and third_param
-        # ):
-        #     UML_MANAGER.rename_attribute(first_param, second_param, third_param)
+        # Add attribute
 
-        # #######################################################
-        # # Add relationship
-        # elif (
-        #     command == UMLClassInterfaceOption.ADD_REL.value
-        #     and first_param
-        #     and second_param
-        # ):
-        #     # TODO: IMPLEMENT LATER
-        #     pass
+        # Delete attribute
 
-        # # Delete relationship
-        # elif (
-        #     command == UMLClassInterfaceOption.DELETE_REL.value
-        #     and first_param
-        #     and second_param
-        # ):
-        #     # TODO IMPLEMENT LATER
-        #     pass
         #######################################################
-        #######################################################
+
+        # Add relationship
+
+        # Delete relationship
 
         #######################################################
         # See menu again
@@ -235,8 +195,10 @@ def help():
 
 def exit():
     print("Exited Program")
-    
+
+
 ########################################################################################################
+
 
 # Display Class List #
 def display_class_list():
@@ -260,9 +222,9 @@ def display_class_detail(class_name: str):
         for key, val in element.items():
             print(f"{val}")
     print("===================")
-    
+
+
 # Sorting Class List #
 def sort_class_list():
     UML_MANAGER.class_list.sort()
     display_class_list()
-    

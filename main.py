@@ -1,3 +1,5 @@
+# MAIN PROGRAM #
+
 from UML_INTERFACE import interface as INTERFACE
 
 
