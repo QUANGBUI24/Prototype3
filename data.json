@@ -6,7 +6,7 @@
                     "attr_name": "heart"
                 }
             ],
-            "class_name": "Person"
+            "class_name": "Human"
         },
         {
             "attr_list": [
@@ -21,10 +21,10 @@
         {
             "dest": "Dog",
             "relation": "pet",
-            "source": "Person"
+            "source": "Human"
         },
         {
-            "dest": "Person",
+            "dest": "Human",
             "relation": "owner",
             "source": "Dog"
         }

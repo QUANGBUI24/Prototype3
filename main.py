@@ -1,10 +1,27 @@
 # MAIN PROGRAM #
 
+# import UML_CORE.UML_CLASS.uml_class as UMLClass
+
 from UML_INTERFACE import interface as INTERFACE
 
 
 def main():
     INTERFACE.main_program_loop()
+
+    # UMLClass.rename_class("Person", "Human")
+
+    # rel_list = UMLClass.relationship_list
+    # for dictionary in rel_list:
+    #     print(dictionary)
+
+    # for dictionary in rel_list:
+    #     for key, value in dictionary.items():
+    #         if value == "Person":
+    #             dictionary[key] = "Human"
+
+    # for dictionary in rel_list:
+    #     print(dictionary)
+
     # class_string = INTERFACE.get_class_detail("Person")
     # print(class_string)
 
