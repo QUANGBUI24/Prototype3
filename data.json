@@ -3,9 +3,6 @@
         {
             "attr_list": [
                 {
-                    "attr_name": "heart"
-                },
-                {
                     "attr_name": "name"
                 },
                 {
@@ -61,11 +58,20 @@
         },
         {
             "attr_list": [
+                {
+                    "attr_name": "race"
+                },
+                {
+                    "attr_name": "environment"
+                }
             ],
             "class_name": "animal"
         },
         {
             "attr_list": [
+                {
+                    "attr_name": "ears"
+                }
             ],
             "class_name": "cat"
         },

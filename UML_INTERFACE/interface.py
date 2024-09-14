@@ -82,6 +82,7 @@ def prompt_working_menu():
 def working_loop():
     prompt_working_menu()
     while True:
+        print("\n(work-menu)\n")
         print("\n==> ", end="")
         user_input: str = input()
         # Split the input by space
@@ -148,6 +149,7 @@ def working_loop():
 def main_program_loop():
     prompt_main_menu()
     while True:
+        print("\n(main-menu)\n")
         print("\n==> ", end="")
         user_input: str = input()
         # Split the input by space
