@@ -89,14 +89,39 @@
     ],
     [
         {
-            "dest": "Dog",
+            "dest": "human",
             "relation": "pet",
-            "source": "Human"
+            "source": "dog"
         },
         {
-            "dest": "Human",
+            "dest": "dog",
             "relation": "owner",
-            "source": "Dog"
+            "source": "human"
+        },
+        {
+            "source": "universe",
+            "dest": "planet",
+            "relation": "parent_class"
+        },
+        {
+            "source": "planet",
+            "dest": "universe",
+            "relation": "sub_class"
+        },
+        {
+            "source": "animal",
+            "dest": "cat",
+            "relation": "parent_class"
+        },
+        {
+            "source": "human",
+            "dest": "cat",
+            "relation": "owner"
+        },
+        {
+            "source": "cat",
+            "dest": "human",
+            "relation": "owner"
         }
     ]
 ]
