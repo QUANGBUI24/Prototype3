@@ -121,7 +121,7 @@
         {
             "source": "cat",
             "dest": "human",
-            "relation": "owner"
+            "relation": "pet"
         }
     ]
 ]
