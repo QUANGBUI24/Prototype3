@@ -239,7 +239,7 @@ def display_class_list(classes_per_row=3):
 # Display Class Details #
 def display_class_detail(class_name: str):
     classes_detail_list = get_class_detail(class_name)
-    print(classes_detail_list)
+    print(f"\n{classes_detail_list}")
 
 
 # Class Detail As String #
@@ -247,7 +247,7 @@ def get_class_detail(class_name: str) -> str:
     class_object = UML_CLASS.get_chosen_class(class_name)
     output = []
     output.append("|===================|")
-    output.append(f"{"--     name     --":^21}")
+    output.append(f"{"--     Name     --":^21}")
     output.append(f"{class_object['class_name']:^20}")
     output.append("|*******************|")
     attr_list = class_object["attr_list"]
