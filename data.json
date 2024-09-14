@@ -4,17 +4,81 @@
             "attr_list": [
                 {
                     "attr_name": "heart"
+                },
+                {
+                    "attr_name": "name"
+                },
+                {
+                    "attr_name": "age"
+                },
+                {
+                    "attr_name": "eyes"
+                },
+                {
+                    "attr_name": "legs"
                 }
             ],
-            "class_name": "Human"
+            "class_name": "human"
         },
         {
             "attr_list": [
                 {
                     "attr_name": "4 legs"
+                },
+                {
+                    "attr_name": "tail"
                 }
             ],
-            "class_name": "Dog"
+            "class_name": "dog"
+        },
+        {
+            "attr_list": [
+                {
+                    "attr_name": "galaxy"
+                },
+                {
+                    "attr_name": "meteorite"
+                }
+            ],
+            "class_name": "universe"
+        },
+        {
+            "attr_list": [
+                {
+                    "attr_name": "roof"
+                },
+                {
+                    "attr_name": "door"
+                },
+                {
+                    "attr_name": "room"
+                },
+                {
+                    "attr_name": "garage"
+                }
+            ],
+            "class_name": "house"
+        },
+        {
+            "attr_list": [
+            ],
+            "class_name": "animal"
+        },
+        {
+            "attr_list": [
+            ],
+            "class_name": "cat"
+        },
+        {
+            "attr_list": [
+                {
+                    "attr_name": "earth"
+                },
+                {
+                    "attr_name": "mars"
+                }
+            ],
+            "class_name": "planet"
         }
     ],
     [
