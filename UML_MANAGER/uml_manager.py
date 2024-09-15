@@ -1,11 +1,16 @@
-################################################################
-#   Author : Quang Bui
-#   Created: September 15, 2024
-#
-#   This shell will manage uml_class, uml_attribute
-#   and uml_relationship shells by sharing the data list
-#   to ensure the consistency between each shell
-################################################################
+"""
+Author : Quang Bui
+Created: September 15, 2024
+
+Description:
+    This shell will manage uml_class, uml_attribute
+    and uml_relationship shells by sharing the data list
+    to ensure the consistency between each shell
+
+List of last date modified:
+- September 15, 2024 (By Quang)
+
+"""
 
 ################################################################
 # IMPORTED MODULES #

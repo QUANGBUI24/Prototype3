@@ -1,15 +1,19 @@
-################################################################
-#   Author : Quang Bui
-#   Created: September 12, 2024
-#
-#   This file is for the CLI
-################################################################
+"""
+Author : Quang Bui
+Created: September 12, 2024
+
+Description:
+    Command Line User Interface
+
+List of last date modified:
+
+"""
 
 from enum import Enum
 from itertools import zip_longest
 
-import UML_CORE.UML_CLASS.uml_class as UML_CLASS
 import UML_CORE.UML_ATTRIBUTE.uml_attribute as UML_ATTRIBUTE
+import UML_CORE.UML_CLASS.uml_class as UML_CLASS
 import UML_CORE.UML_RELATIONSHIP.uml_relationship as UML_REL
 import UML_UTILITY.SAVE_LOAD.save_load as SAVE_LOAD
 
@@ -117,22 +121,44 @@ def working_loop():
         #######################################################
 
         # Add attribute
-        elif command == UMLClassInterfaceOption.ADD_ATTR.value and first_param and second_param:
+        elif (
+            command == UMLClassInterfaceOption.ADD_ATTR.value
+            and first_param
+            and second_param
+        ):
             UML_ATTRIBUTE.add_attr(first_param, second_param)
         # Delete attribute
-        elif command == UMLClassInterfaceOption.DELETE_ATTR.value and first_param and second_param:
+        elif (
+            command == UMLClassInterfaceOption.DELETE_ATTR.value
+            and first_param
+            and second_param
+        ):
             UML_ATTRIBUTE.delete_attr(first_param, second_param)
         # Rename attribute
-        elif command == UMLClassInterfaceOption.RENAME_ATTR.value and first_param and second_param and third_param:
+        elif (
+            command == UMLClassInterfaceOption.RENAME_ATTR.value
+            and first_param
+            and second_param
+            and third_param
+        ):
             UML_ATTRIBUTE.rename_attr(first_param, second_param, third_param)
 
         #######################################################
 
         # Add relationship
-        elif command == UMLClassInterfaceOption.ADD_REL.value and first_param and second_param and third_param:
+        elif (
+            command == UMLClassInterfaceOption.ADD_REL.value
+            and first_param
+            and second_param
+            and third_param
+        ):
             UML_REL.add_relationship(first_param, second_param, third_param)
         # Delete relationship
-        elif command == UMLClassInterfaceOption.DELETE_REL.value and first_param and second_param:
+        elif (
+            command == UMLClassInterfaceOption.DELETE_REL.value
+            and first_param
+            and second_param
+        ):
             UML_REL.remove_relationship(first_param, second_param)
 
         #######################################################
@@ -218,8 +244,7 @@ def exit():
 def display_class_list(classes_per_row=3):
     # Generate class details split into lines
     class_details_list = [
-        get_class_detail(class_name).split("\n")
-        for class_name in UML_CLASS.class_list
+        get_class_detail(class_name).split("\n") for class_name in UML_CLASS.class_list
     ]
     print(
         "\n-------------------------------------------------------------------------------------------------\n"
@@ -265,7 +290,7 @@ def get_class_detail(class_name: str) -> str:
             output.append(f"{element["dest"]:^20}")
             output.append(f"{element["relation"]:^20}")
             output.append(f"{"|-----------|":^20}")
-                
+
     output.append("|===================|")
     # https://www.geeksforgeeks.org/python-string-join-method/
     return "\n".join(output)

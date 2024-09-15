@@ -1,10 +1,14 @@
-################################################################
-#   Author : Emily Riley
-#   Created: September 13, 2024
-#
-#   A shell to handle atttribute functions
-################################################################
+"""
+Author : Emily Riley
+Created: September 13, 2024
 
+Description:
+    A shell to handle atttribute functions
+
+List of last date modified:
+- September 15, 2024 (By Quang)
+
+"""
 
 ################################################################
 # IMPORTED MODULES #

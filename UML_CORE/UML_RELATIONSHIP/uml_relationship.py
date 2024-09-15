@@ -10,6 +10,10 @@ Description:
 This script manages relationships between classes by allowing you to add or remove relationships. 
 It loads data from a JSON file to keep track of existing relationships and validates class names 
 for correctness and existence.
+
+List of last date modified:
+- September 15, 2024 (By Quang)
+
 """
 ################################################################################
 

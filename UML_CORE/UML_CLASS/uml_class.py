@@ -1,12 +1,14 @@
-################################################################
-#   Author : Quang Bui
-#   Created: September 12, 2024
-#
-#   Description: This shell has UML class features
-#
-#   Last date modified:
-################################################################
+"""
+Author : Quang Bui
+Created: September 12, 2024
 
+Description:
+    This shell has UML class deatures
+
+List of date modified:
+- September 15, 2024 (By Quang)
+
+"""
 
 ################################################################
 # IMPORTED MODULES #
