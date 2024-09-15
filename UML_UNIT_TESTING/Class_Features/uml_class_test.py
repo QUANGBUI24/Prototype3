@@ -1,14 +1,3 @@
-"""
-Author : Quang Bui
-Created: September 13, 2024
-
-Description:
-    This file has UML class Unit Tests
-
-List of last date modified:
-
-"""
-
 import os
 import sys
 import unittest
@@ -38,7 +27,7 @@ class TestUMLClassAdd(unittest.TestCase):
     @patch("UML_CORE.UML_CLASS.uml_class.user_choice", return_value=False)
     def test_add_class_cancel(self, mock_user_choice):
         """Test Case 2: Cancel add class"""
-        class_name = "ticket"
+        class_name = "universe"
         # Expected: Action is cancelled due to user_choice returning False
         UMLClass.add_class(class_name)
         # The class should not be added
@@ -137,7 +126,7 @@ class TestUMLClassAdd(unittest.TestCase):
         """Test Case 4: Rename a class that does not exist to a valid new name"""
         # Expected: Class 'player' not found!
         class_name = "player"
-        new_name = "chair"
+        new_name = "human"
         UMLClass.rename_class(class_name, new_name)
         self.assertNotIn(new_name, UMLClass.class_list)
 
