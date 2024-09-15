@@ -42,7 +42,7 @@ Clone the project repository from GitHub to your local machine using the appropr
   git clone git@github.com:QUANGBUI24/Prototype3.git
 
  
-- ** Step 2: Set Up a Virtual Environment**
+### Step 2: Set Up a Virtual Environment**
 - **Windows (VSCode Terminal):**  
   ```bash
   python -m venv venv
@@ -51,7 +51,7 @@ Clone the project repository from GitHub to your local machine using the appropr
   ```bash
   python3 -m venv venv
 
-- ** Step 3: Run the Build Script**
+### Step 3: Run the Build Script**
 - **Windows (VSCode Terminal):**  
   ```bash
   python build.py
