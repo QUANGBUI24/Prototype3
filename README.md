@@ -43,7 +43,7 @@ Clone the project repository from GitHub to your local machine using the appropr
   ```bass
   cd Prototype3
 
-- **Then follow instruction below:**
+- **Then create the virtual environment by typing the commands below**
 
 - **Windows (Powershell):**  
   ```bash
