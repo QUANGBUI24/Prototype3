@@ -14,7 +14,6 @@
 
 ## Table of Contents
 - [Introduction](#introduction)
-- [Setting Up a Virtual Environment Manually](#setting-up-a-virtual-environment-manually)
 - [Instruction](#instruction)
 
 ## Introduction
@@ -31,8 +30,7 @@ Before running the program, you need to:
 **macOS (VSCode Terminal) and Linux:**
 `git clone git@github.com:QUANGBUI24/Prototype3.git`
 
-**Step 2: Type the commands below in the terminal**
-## Setting Up a Virtual Environment
+**Step 2: Type the commands below in the terminal to set up a Virtual Environment**
 
 **Windows (VSCode Terminal):**
 - **Create Virtual Environment:** `python -m venv venv`
