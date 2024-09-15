@@ -6,6 +6,7 @@ Description:
     Command Line User Interface
 
 List of last date modified:
+- September 15, 2024 (By Quang)
 
 """
 
@@ -49,9 +50,7 @@ def prompt_main_menu():
     print("Type 'work' start working with class(es)")
     print("Type 'list_class' to see the list of all created class(es)")
     print("Type 'class_detail <class_name>' to see the detail of the chosen class")
-    print(
-        "Type 'class_rel <class_name>' to see the relationships between the chosen class and other class(es)"
-    )
+    print("Type 'class_rel' to see the relationships between class(es)")
     print("Type 'save' to save data")
     print("Type 'sort' to sort the class list in alphabetical order")
     print("Type 'show_menu' to see the menu again")
@@ -100,9 +99,6 @@ def working_loop():
             user_input_component[2] if len(user_input_component) > 2 else None
         )
         third_param = user_input_component[3] if len(user_input_component) > 3 else None
-        # fourth_param = (
-        #     user_input_component[4] if len(user_input_component) > 4 else None
-        # )
         # Start the logic
         #######################################################
         # Add class
@@ -197,11 +193,9 @@ def main_program_loop():
         # Show the details of the chosen class
         elif command == InterfaceOptions.CLASS_DETAIL.value and first_param:
             display_class_detail(first_param)
-        #######################################################
         # Show the relationship of the chosen class with others
         elif command == InterfaceOptions.CLASS_REL.value:
             display_relationship_list()
-        #######################################################
         # Show the instructions for this program
         elif command == InterfaceOptions.HELP.value:
             help()
@@ -303,7 +297,6 @@ def get_class_detail(class_name: str) -> str:
             output.append(f"{"|-----------|":^20}")
 
     output.append("|===================|")
-    # https://www.geeksforgeeks.org/python-string-join-method/
     return "\n".join(output)
 
 
