@@ -43,7 +43,7 @@ Before setting up the environment, type:
   ```bass
   cd Prototype3
 
-Then follow instruction below:
+- Then follow instruction below:
 
 - **Windows (Powershell):**  
   ```bash
