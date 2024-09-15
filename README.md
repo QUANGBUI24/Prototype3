@@ -33,29 +33,29 @@ Follow these steps to set up and run the project on your local machine:
 
 Clone the project repository from GitHub to your local machine using the appropriate command for your operating system:
 
-- **Windows (VSCode Terminal):**    
+- **Windows (Powershell):**    
   ```bash
   git clone https://github.com/QUANGBUI24/Prototype3.git
 
-- **macOS (VSCode Terminal) and Linux:** 
+- **macOS and Linux:** 
   ```bash 
   git clone git@github.com:QUANGBUI24/Prototype3.git
 
  
 ### Step 2: Set Up a Virtual Environment**
-- **Windows (VSCode Terminal):**  
+- **Windows (Powershell):**  
   ```bash
   python -m venv venv
 
-- **macOS (VSCode Terminal) and Linux:** 
+- **macOS and Linux:** 
   ```bash
   python3 -m venv venv
 
 ### Step 3: Run the Build Script**
-- **Windows (VSCode Terminal):**  
+- **Windows (Powershell):**  
   ```bash
   python build.py
 
-- **macOS (VSCode Terminal) and Linux:** 
+- **macOS and Linux:** 
   ```bash
   python3 build.py
