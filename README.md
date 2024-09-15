@@ -65,4 +65,3 @@ Clone the project repository from GitHub to your local machine using the appropr
 
 If you run the program using Visual Studio Code, then open the build.py file, then hit
 the run button.
-![alt text](image.png)
