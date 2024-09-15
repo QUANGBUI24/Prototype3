@@ -8,14 +8,13 @@ def activate_venv():
 
     # Check the operating system and set the activation and install command accordingly
     if platform.system() == "Windows":
-        activate_command = r"venv\Scripts\activate"
+        # For Windows systems
         install_command = r"venv\Scripts\pip install -r requirements.txt"
     else:
-        activate_command = "source venv/bin/activate"
-        install_command = "venv/bin/pip install -r requirements.txt"
+        # For Unix-based systems (Linux and macOS)
+        install_command = "./venv/bin/pip install -r requirements.txt"
 
-    # Run the commands to activate the venv and install requirements
-    subprocess.run(activate_command, shell=True)
+    # Run the command to install requirements
     result = subprocess.run(install_command, shell=True)
     if result.returncode != 0:
         print("Failed to install dependencies.")
@@ -30,7 +29,7 @@ def run_program():
     if platform.system() == "Windows":
         python_executable = r"venv\Scripts\python.exe"
     else:
-        python_executable = "venv/bin/python"
+        python_executable = "./venv/bin/python"
 
     result = subprocess.run([python_executable, "main.py"], shell=True)
     if result.returncode != 0:
