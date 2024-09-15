@@ -14,23 +14,35 @@
 
 ## Table of Contents
 - [Introduction](#introduction)
-- [Installation](#installation)
-- [Setting Up a Virtual Environment](#setting-up-a-virtual-environment)
+- [Setting Up a Virtual Environment Manually](#setting-up-a-virtual-environment-manually)
+- [Instruction](#instruction)
 
 ## Introduction
 
-## Installation
+## Instruction
 
+Before running the program, you need to:
+
+**Step 1: Clone the repository**
+
+**Windows (VSCode Terminal):**
+`git clone https://github.com/QUANGBUI24/Prototype3.git`
+
+**macOS (VSCode Terminal) and Linux:**
+`git clone git@github.com:QUANGBUI24/Prototype3.git`
+
+**Step 2: Type the commands below in the terminal**
 ## Setting Up a Virtual Environment
 
 **Windows (VSCode Terminal):**
 - **Create Virtual Environment:** `python -m venv venv`
-- **Activate Virtual Environment:** `.\venv\Scripts\activate`
 
-**macOS (VSCode Terminal):**
+**macOS (VSCode Terminal) and Linux:**
 - **Create Virtual Environment:** `python3 -m venv venv`
-- **Activate Virtual Environment:** `source venv/bin/activate`
 
-**Linux:**
-- **Create Virtual Environment:** `python3 -m venv venv`
-- **Activate Virtual Environment:** `source venv/bin/activate`
+**Step 3: Run build.py by typing the commands below in the terminal**
+
+**Windows (VSCode Terminal):** `python build.py`
+
+**macOS (VSCode Terminal) and Linux:** `python3 build.py`
+
