@@ -1,4 +1,4 @@
-import UML_CORE.UML_CLASS.uml_class as UMLClass
+import UML_MANAGER.uml_manager as UML_MANAGER
 from UML_UTILITY.FORMAT_CHECKING.validators import check_format
 
 """
@@ -13,19 +13,14 @@ for correctness and existence.
 """
 ################################################################################
 
-# LOADING DATA FROM JSON FILE TO GLOBAL DICTIONARY #
-data_list = UMLClass.data_list
-
-# Provides an empty list if "relationships" key is missing
-if data_list is None:
-    data_list = [[], []]
-
-# Get list of classes and its attributes
-class_and_attr_list = data_list[0]
-# Get list of relationships
-relationship_list = data_list[1]
-# Create a class list for convenience
-class_list = [dictionary["class_name"] for dictionary in class_and_attr_list]
+# GET DATA FROM JSON FILE #
+data_list = UML_MANAGER.data_list
+# GET CLASS AND ITS ATTRIBUTES LIST #
+class_and_attr_list = UML_MANAGER.class_and_attr_list
+# GET RELATIONSHIP LIST #
+relationship_list = UML_MANAGER.relationship_list
+# GET CLASS NAME LIST #
+class_list = UML_MANAGER.class_list
 
 ################################################################################
 # WORKING WITH RELATIONSHIPS #
@@ -101,7 +96,6 @@ def remove_relationship(source: str, dest: str):
 
 def validate_class_name(class_name: str) -> bool:
     # Load the data again if necessary
-    data_list = UMLClass.data_list
     class_and_attr_list = data_list[0] if data_list else []
 
     # Check if class exists in the list
