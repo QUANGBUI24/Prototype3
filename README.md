@@ -17,9 +17,8 @@ A project developed by team EQI for the 2024 Fall semester course.
   - [Step 1: Clone the Repository](#step-1-clone-the-repository)
   - [Step 2: Set Up a Virtual Environment](#step-2-set-up-a-virtual-environment)
   - [Step 3: Run the Build Script](#step-3-run-the-build-script)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
+
+- [Note](#note)
 
 ## Introduction
 
@@ -37,13 +36,13 @@ Clone the project repository from GitHub to your local machine using the appropr
   ```bash
   git clone https://github.com/QUANGBUI24/Prototype3.git
  
-### Step 2: Set Up a Virtual Environment**
+### Step 2: Set Up a Virtual Environment
 
 - **Before setting up the environment, type:**
   ```bass
   cd Prototype3
 
-- **Then create the virtual environment by typing the commands below**
+- **Then create the virtual environment by typing the commands below:**
 
 - **Windows (Powershell):**  
   ```bash
@@ -61,3 +60,8 @@ Clone the project repository from GitHub to your local machine using the appropr
 - **macOS and Linux:** 
   ```bash
   python3 build.py
+
+## Note:
+
+If you run the program using Visual Studio Code, then open the build.py file, then hit
+the run button.
