@@ -15,6 +15,7 @@ from itertools import zip_longest
 import UML_CORE.UML_ATTRIBUTE.uml_attribute as UML_ATTRIBUTE
 import UML_CORE.UML_CLASS.uml_class as UML_CLASS
 import UML_CORE.UML_RELATIONSHIP.uml_relationship as UML_REL
+import UML_MANAGER.uml_manager as UML_MANAGER
 import UML_UTILITY.SAVE_LOAD.save_load as SAVE_LOAD
 
 
@@ -197,9 +198,9 @@ def main_program_loop():
         elif command == InterfaceOptions.CLASS_DETAIL.value and first_param:
             display_class_detail(first_param)
         #######################################################
-        # # Show the relationship of the chosen class with others
-        # elif command == InterfaceOptions.CLASS_REL.value and first_param:
-        #     class_rel(first_param)
+        # Show the relationship of the chosen class with others
+        elif command == InterfaceOptions.CLASS_REL.value:
+            display_relationship_list()
         #######################################################
         # Show the instructions for this program
         elif command == InterfaceOptions.HELP.value:
@@ -225,26 +226,14 @@ def main_program_loop():
 
 ########################################################################################################
 # MAIN MENU #
-def class_rel(class_name: str):
-    print("Inside relationship\n")
-
-
-def help():
-    print("Inside help\n")
-
-
-def exit():
-    print("Exited Program")
-
-
-########################################################################################################
 
 
 # Display Class List #
 def display_class_list(classes_per_row=3):
     # Generate class details split into lines
     class_details_list = [
-        get_class_detail(class_name).split("\n") for class_name in UML_CLASS.class_list
+        get_class_detail(class_name).split("\n")
+        for class_name in UML_MANAGER.class_list
     ]
     print(
         "\n-------------------------------------------------------------------------------------------------\n"
@@ -252,6 +241,28 @@ def display_class_list(classes_per_row=3):
     # Chunk the class details into groups of `classes_per_row`
     for i in range(0, len(class_details_list), classes_per_row):
         chunk = class_details_list[i : i + classes_per_row]
+
+        # Use zip_longest to align and print side by side
+        for lines in zip_longest(*chunk, fillvalue=" " * 20):
+            print("   ".join(line.ljust(30) for line in lines))
+        print(
+            "\n-------------------------------------------------------------------------------------------------\n"
+        )
+
+
+# Display Relationship List #
+def display_relationship_list(classes_per_row=3):
+    # Generate class details split into lines
+    class_relationship_detail_list = [
+        get_relationship_detail(class_name).split("\n")
+        for class_name in UML_MANAGER.class_list
+    ]
+    print(
+        "\n-------------------------------------------------------------------------------------------------\n"
+    )
+    # Chunk the class relationship details into groups of `classes_per_row`
+    for i in range(0, len(class_relationship_detail_list), classes_per_row):
+        chunk = class_relationship_detail_list[i : i + classes_per_row]
 
         # Use zip_longest to align and print side by side
         for lines in zip_longest(*chunk, fillvalue=" " * 20):
@@ -281,7 +292,7 @@ def get_class_detail(class_name: str) -> str:
         for key, val in element.items():
             output.append(f"{val:^20}")
     output.append("|*******************|")
-    rel_list = UML_CLASS.relationship_list
+    rel_list = UML_MANAGER.relationship_list
     output.append(f"{"-- Relationship  --":^21}")
     for element in rel_list:
         if element["source"] == class_name:
@@ -294,6 +305,36 @@ def get_class_detail(class_name: str) -> str:
     output.append("|===================|")
     # https://www.geeksforgeeks.org/python-string-join-method/
     return "\n".join(output)
+
+
+# Get Class Relationships #
+def get_relationship_detail(class_name: str) -> str:
+    class_object = UML_CLASS.get_chosen_class(class_name)
+    output = []
+    output.append("|===================|")
+    output.append(f"{"--     Name     --":^21}")
+    output.append(f"{class_object['class_name']:^20}")
+    output.append("|*******************|")
+    rel_list = UML_MANAGER.relationship_list
+    output.append("|===================|")
+    output.append(f"{"-- Relationship  --":^21}")
+    for element in rel_list:
+        if element["source"] == class_name:
+            output.append(f"{"|-----------|":^20}")
+            output.append(f"{element["source"]:^20}")
+            output.append(f"{element["dest"]:^20}")
+            output.append(f"{element["relation"]:^20}")
+            output.append(f"{"|-----------|":^20}")
+    output.append("|===================|")
+    return "\n".join(output)
+
+
+def help():
+    print("Inside help\n")
+
+
+def exit():
+    print("Exited Program")
 
 
 # Sorting Class List #
