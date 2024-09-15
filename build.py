@@ -1,6 +1,6 @@
 import os
 import subprocess
-import platform
+import platform 
 
 
 def activate_venv():
