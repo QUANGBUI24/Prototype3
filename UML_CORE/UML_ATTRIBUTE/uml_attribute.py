@@ -140,7 +140,7 @@ def check_attr_name(
     is_format_correct = check_format(attr_name)
     if is_format_correct != "Valid input":
         print(is_format_correct)
-        return
+        return False
     # Check if attribute exists
     is_attr_exist = validate_attr_name(attr_list, attr_name)
     # If the name should exist but not exist
