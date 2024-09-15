@@ -4,6 +4,12 @@ import sys
 import unittest
 from unittest.mock import patch
 
+################################################################
+# ADD ROOT PATH #
+# Adjusting the path to allow imports from the project root
+root_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+sys.path.append(root_path)
+
 import UML_CORE.UML_CLASS.uml_class as UMLClass
 
 # Import the module you're testing
@@ -18,12 +24,6 @@ Description:
 This test suite is designed to verify the functionality of the `uml_relationship.py` module,
 which manages relationships between UML classes.
 """
-
-################################################################
-# ADD ROOT PATH #
-# Adjusting the path to allow imports from the project root
-root_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-sys.path.append(root_path)
 
 
 ################################################################
