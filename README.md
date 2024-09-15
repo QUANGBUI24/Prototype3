@@ -33,14 +33,9 @@ Follow these steps to set up and run the project on your local machine:
 
 Clone the project repository from GitHub to your local machine using the appropriate command for your operating system:
 
-- **Windows (Powershell):**    
+- **Windows (Powershell), macOS and Linux:**    
   ```bash
   git clone https://github.com/QUANGBUI24/Prototype3.git
-
-- **macOS and Linux:** 
-  ```bash 
-  git clone git@github.com:QUANGBUI24/Prototype3.git
-
  
 ### Step 2: Set Up a Virtual Environment**
 
