@@ -13,9 +13,9 @@ List of last date modified:
 from enum import Enum
 from itertools import zip_longest
 
-import UML_CORE.UML_METHOD.uml_method as UML_METHOD
 import UML_CORE.UML_ATTRIBUTE.uml_attribute as UML_ATTRIBUTE
 import UML_CORE.UML_CLASS.uml_class as UML_CLASS
+import UML_CORE.UML_METHOD.uml_method as UML_METHOD
 import UML_CORE.UML_RELATIONSHIP.uml_relationship as UML_REL
 import UML_MANAGER.uml_manager as UML_MANAGER
 import UML_UTILITY.SAVE_LOAD.save_load as SAVE_LOAD
@@ -40,7 +40,7 @@ class UMLClassInterfaceOption(Enum):
     ADD_ATTR = "add_attr"
     DELETE_ATTR = "delete_attr"
     RENAME_ATTR = "rename_attr"
-    ADD_METHOD= "add_method"
+    ADD_METHOD = "add_method"
     DELETE_METHOD = "delete_method"
     RENAME_METHOD = "rename_method"
     ADD_REL = "add_rel"
@@ -57,8 +57,7 @@ def prompt_main_menu():
     print("Type 'class_rel' to see the relationships between class(es)")
     print("Type 'save' to save data")
     print("Type 'sort' to sort the class list in alphabetical order")
-    print("Type 'show_menu' to see the menu again")
-    print("Type 'help' to see the instructions")
+    print("Type 'help' to see the menu again")
     print("Type 'exit' to quit program")
 
 
@@ -68,9 +67,7 @@ def prompt_working_menu():
     print("Type 'delete_class <class_name>' to delete a class")
     print("Type 'rename_class <class_name> <new_name>' to rename a class")
     # Attribute
-    print(
-        "Type 'add_attr <class_name> <attr_name>' to add an attribute"
-    )
+    print("Type 'add_attr <class_name> <attr_name>' to add an attribute")
     print(
         "Type 'delete_attr <class_name> <attr_name>' to delete an attribute from the chosen class"
     )
@@ -78,9 +75,7 @@ def prompt_working_menu():
         "Type 'rename_attr <class_name> <current_attribute_name> <new_name>' to rename an attribute"
     )
     # Method
-    print(
-        "Type 'add_method <class_name> <method_name>' to add an method"
-    )
+    print("Type 'add_method <class_name> <method_name>' to add an method")
     print(
         "Type 'delete_method <class_name> <method_name>' to delete an method from the chosen class"
     )
@@ -94,7 +89,7 @@ def prompt_working_menu():
     print(
         "Type 'delete_rel <chosen_class_name> <destination_class_name>' to delete a relationship"
     )
-    print("Type 'show_menu' to see the menu again")
+    print("Type 'help' to see the menu again")
     print("Type 'back' to go back to main menu'")
 
 
@@ -153,9 +148,9 @@ def working_loop():
             and third_param
         ):
             UML_ATTRIBUTE.rename_attr(first_param, second_param, third_param)
-        
+
         #######################################################
-        
+
         # Add method
         elif (
             command == UMLClassInterfaceOption.ADD_METHOD.value
@@ -178,7 +173,7 @@ def working_loop():
             and third_param
         ):
             UML_METHOD.rename_method(first_param, second_param, third_param)
-            
+
         #######################################################
 
         # Add relationship
@@ -335,7 +330,7 @@ def get_class_detail(class_name: str) -> str:
     output.append(f"{"--   Method   --":^21}")
     for element in method_list:
         for key, val in element.items():
-            output.append(f"{val:^20}")
+            output.append(f"{"val":^20}")
     output.append("|*******************|")
     # Relationship
     rel_list = UML_MANAGER.relationship_list
@@ -373,6 +368,7 @@ def get_relationship_detail(class_name: str) -> str:
     output.append("|===================|")
     return "\n".join(output)
 
+
 # Print only list of class names
 def display_list_of_only_class_name():
     print("\n|===================|")
@@ -382,18 +378,20 @@ def display_list_of_only_class_name():
     for class_name in class_list:
         print(f"{class_name:^20}")
     print("|===================|")
-    
+
+
 # Asking if user want to print list of all class names or list of all class details
 def ask_user_display_class_list() -> bool:
     while True:
-        user_input = input("\nDo you want to print all class detail? (Yes/No): ").lower()
+        user_input = input(
+            "\nDo you want to print all class detail? (Yes/No): "
+        ).lower()
         if user_input in ["yes", "y"]:
             return True
         elif user_input in ["no", "n"]:
             return False
         else:
             print("Invalid input. Please enter 'Yes' or 'No'.")
-            
 
 
 def help():
