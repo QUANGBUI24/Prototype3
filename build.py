@@ -3,17 +3,20 @@ import subprocess
 import platform
 import sys
 
-REQUIRED_PYTHON_VERSION = "3.12.5"
+REQUIRED_PYTHON_MAJOR = 3
+REQUIRED_PYTHON_MINOR = 12
 
 def check_python_version():
-    """Checks if the Python version matches the required version."""
+    """Checks if the Python version matches the required major and minor versions."""
+    print("==========================================================================================================================================================================================")
     current_version = platform.python_version()
-    if current_version != REQUIRED_PYTHON_VERSION:
-        print(f"Error: This project requires Python {REQUIRED_PYTHON_VERSION}, but you're using Python {current_version}.\n")
+    major, minor, _ = map(int, current_version.split('.'))
+    if major == REQUIRED_PYTHON_MAJOR and minor == REQUIRED_PYTHON_MINOR:
+        print(f"Python version: {current_version}\n")
+    else:
+        print(f"Error: This project requires Python 3.12.*, but you're using Python {current_version}.\n")
         print("Please install the correct Python version and try again.")
         sys.exit(1)
-    else:
-        print(f"Python version {current_version} is correct.\n")
 
 def activate_venv():
     """Installs dependencies from requirements.txt within the virtual environment."""
@@ -53,6 +56,8 @@ def run_program():
         return
 
     print(f"Using Python executable at: {python_executable}\n")
+    print("Program beginning...\n")
+    print("==========================================================================================================================================================================================\n")
 
     result = subprocess.run([python_executable, "main.py"])
     if result.returncode != 0:
@@ -64,3 +69,4 @@ if __name__ == "__main__":
     check_python_version()
     activate_venv()
     run_program()
+    
