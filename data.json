@@ -95,7 +95,15 @@
         },
         {
             "attr_list": [],
-            "method_list": [],
+            "method_list": [
+                {
+                    "method_name": "attack",
+                    "parameters": [
+                        "paramone",
+                        "paramtwo"
+                    ]
+                }
+            ],
             "class_name": "test"
         }
     ],
