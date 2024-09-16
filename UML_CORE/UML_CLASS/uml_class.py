@@ -162,6 +162,7 @@ def change_name(class_name: str, new_name: str):
 def get_class_json_format(class_name: str) -> dict[str, list[dict[str, str]]]:
     return {
         "attr_list": [],  # Placeholder for attribute names
+        "method_list": [], # Placeholder for method names
         "class_name": class_name,
     }
 
