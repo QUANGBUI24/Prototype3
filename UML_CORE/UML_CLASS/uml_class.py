@@ -21,7 +21,7 @@ from UML_UTILITY.FORMAT_CHECKING.validators import check_format
 # GET DATA FROM JSON FILE #
 data_list = UML_MANAGER.data_list
 # GET CLASS AND ITS ATTRIBUTES LIST #
-class_and_attr_list = UML_MANAGER.class_and_attr_list
+class_and_attr_and_method_list = UML_MANAGER.class_and_attr_and_method_list
 # GET RELATIONSHIP LIST #
 relationship_list = UML_MANAGER.relationship_list
 # GET CLASS NAME LIST #
@@ -44,7 +44,7 @@ def add_class(class_name: str):
         return
     # Convert to json object and append to the list
     transformed_json_object = get_class_json_format(class_name)
-    class_and_attr_list.append(transformed_json_object)
+    class_and_attr_and_method_list.append(transformed_json_object)
     class_list.append(class_name)
     print(f"Added class '{class_name}' successfully!")
 
@@ -62,7 +62,7 @@ def delete_class(class_name: str):
         return
     # If class exist, get the class object and pop from the list
     class_object = get_chosen_class(class_name)
-    class_and_attr_list.remove(class_object)
+    class_and_attr_and_method_list.remove(class_object)
     class_list.remove(class_name)
     print(f"Successfully removed class '{class_name}'!")
 
@@ -96,7 +96,7 @@ def rename_class(class_name: str, new_name: str):
 
 # Check Class Name Exist Helper #
 def validate_class_name(class_name: str):
-    for dictionary in class_and_attr_list:
+    for dictionary in class_and_attr_and_method_list:
         if dictionary["class_name"] == class_name:
             return True
     return False
@@ -168,7 +168,7 @@ def get_class_json_format(class_name: str) -> dict[str, list[dict[str, str]]]:
 
 # Get Chosen Class #
 def get_chosen_class(class_name: str) -> dict[str, list[dict[str, str]]]:
-    for dictionary in class_and_attr_list:
+    for dictionary in class_and_attr_and_method_list:
         if dictionary["class_name"] == class_name:
             return dictionary
 

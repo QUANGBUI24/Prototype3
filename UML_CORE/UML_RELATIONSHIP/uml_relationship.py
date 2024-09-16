@@ -20,7 +20,7 @@ List of last date modified:
 # GET DATA FROM JSON FILE #
 data_list = UML_MANAGER.data_list
 # GET CLASS AND ITS ATTRIBUTES LIST #
-class_and_attr_list = UML_MANAGER.class_and_attr_list
+class_and_attr_and_method_list = UML_MANAGER.class_and_attr_and_method_list
 # GET RELATIONSHIP LIST #
 relationship_list = UML_MANAGER.relationship_list
 # GET CLASS NAME LIST #
@@ -85,10 +85,10 @@ def remove_relationship(source: str, dest: str):
 def validate_class_name(class_name: str) -> bool:
     # Load the data again if necessary
     data_list = UML_MANAGER.data_list
-    class_and_attr_list = data_list[0] if data_list else []
+    class_and_attr_and_method_list = data_list[0] if data_list else []
 
     # Check if class exists in the list
-    return any(cls for cls in class_and_attr_list if cls["class_name"] == class_name)
+    return any(cls for cls in class_and_attr_and_method_list if cls["class_name"] == class_name)
 
 
 def check_class_name(class_name: str, should_exist: bool) -> bool:

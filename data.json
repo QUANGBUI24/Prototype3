@@ -15,6 +15,7 @@
                     "attr_name": "legs"
                 }
             ],
+            "method_list": [],
             "class_name": "human"
         },
         {
@@ -26,6 +27,7 @@
                     "attr_name": "tail"
                 }
             ],
+            "method_list": [],
             "class_name": "dog"
         },
         {
@@ -37,6 +39,7 @@
                     "attr_name": "meteorite"
                 }
             ],
+            "method_list": [],
             "class_name": "universe"
         },
         {
@@ -54,6 +57,7 @@
                     "attr_name": "garage"
                 }
             ],
+            "method_list": [],
             "class_name": "house"
         },
         {
@@ -65,6 +69,7 @@
                     "attr_name": "environment"
                 }
             ],
+            "method_list": [],
             "class_name": "animal"
         },
         {
@@ -73,6 +78,7 @@
                     "attr_name": "ears"
                 }
             ],
+            "method_list": [],
             "class_name": "cat"
         },
         {
@@ -84,6 +90,7 @@
                     "attr_name": "mars"
                 }
             ],
+            "method_list": [],
             "class_name": "planet"
         }
     ],

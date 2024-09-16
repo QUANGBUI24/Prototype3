@@ -29,9 +29,9 @@ if data_list is None:
     data_list = [[], []]
 
 # Get list of classes and its attributes
-class_and_attr_list = data_list[0]
+class_and_attr_and_method_list = data_list[0]
 # Get list of relationships
 relationship_list = data_list[1]
 # Add class name to class_list
-for dictionary in class_and_attr_list:
+for dictionary in class_and_attr_and_method_list:
     class_list.append(dictionary["class_name"])

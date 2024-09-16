@@ -1,16 +1,3 @@
-"""
-Author : Emily Riley
-Created: September 13, 2024
-
-Description:
-    A shell to handle atttribute functions
-
-List of last date modified:
-- September 15, 2024 (By Quang)
-
-"""
-
-
 ################################################################
 # IMPORTED MODULES #
 
@@ -21,7 +8,7 @@ from UML_UTILITY.FORMAT_CHECKING.validators import check_format
 ################################################################
 
 # GET CLASS AND ITS ATTRIBUTES LIST #
-class_and_attr_and_method_list = UML_MANAGER.class_and_attr_and_method_list
+class_and_attr_list = UML_MANAGER.class_and_attr_list
 
 ################################################################
 # ADD, DELETE, RENAME ATTRIBUTE FUNCTIONS #
@@ -50,7 +37,7 @@ def add_attr(class_name:str, attr_name:str):
     # Create JSON object for attribute
     json_attr = get_attr_json_format(attr_name)
     # Add JSON attribute object to global object that holds classes
-    for cls in class_and_attr_and_method_list:
+    for cls in class_and_attr_list:
         if (cls["class_name"] == class_name):
             cls["attr_list"].append(json_attr)
     # Print successful message 
@@ -82,7 +69,7 @@ def delete_attr(class_name:str, attr_name:str):
     # Get attribute object that exists in class object
     attr_object = get_attr_object(attr_list, attr_name)  
     # Find and delete attribute object
-    for cls in class_and_attr_and_method_list:
+    for cls in class_and_attr_list:
         if (cls["class_name"] == class_name):
             cls["attr_list"].remove(attr_object)
     # Print successful message 
@@ -118,7 +105,7 @@ def rename_attr(class_name:str, old_attr_name:str, new_attr_name:str):
     if not is_chosen_yes:
         return   
     # Find old attribute and change name to new attribute
-    for cls in class_and_attr_and_method_list:
+    for cls in class_and_attr_list:
         if (cls["class_name"] == class_name):
             for attribute in cls["attr_list"]:
                 if attribute["attr_name"] == old_attr_name:
@@ -168,7 +155,7 @@ def check_attr_name(attr_list:str, attr_name:str,class_name:str, should_exist:bo
 # and class_name is in correct format
 # Get the attribute list for specific class
 def get_attr_list(class_name:str) -> list:
-    for cls in class_and_attr_and_method_list:
+    for cls in class_and_attr_list:
         if (cls["class_name"] == class_name):
             return cls["attr_list"]
         
