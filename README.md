@@ -64,6 +64,6 @@ Clone the project repository from GitHub to your local machine using the appropr
 ## Note:
 
 - **If you run the program using Visual Studio Code:**
-    - 1 - Follow step 2 in the instruction on VSCode terminal
+    - 1 - Follow step 2 (don't type **cd Prototype3**) in the instruction on VSCode terminal
     - 2 - Follow step 3 in the instruction on VSCode terminal or 
 open **build.py** file, then hit the run button.
