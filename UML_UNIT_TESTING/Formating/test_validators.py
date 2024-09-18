@@ -13,13 +13,14 @@ Unit tests for the check_format function, which validates whether a given string
 import unittest
 import os
 import sys
-from UML_UTILITY.FORMAT_CHECKING.validators import check_format
 
 ################################################################
 # ADD ROOT PATH #
 
 root_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 sys.path.append(root_path)
+
+from UML_UTILITY.FORMAT_CHECKING.validators import check_format
 
 ################################################################
 
