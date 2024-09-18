@@ -21,7 +21,9 @@ A project developed by team EQI for the 2024 Fall semester course.
 - [Unit Tests](#unit-tests)
 ## Introduction
 
-This project [provide a concise overview of the project, including its purpose, target users, and key features. Explain any relevant context or background information that would help someone understand the significance or use of the project].
+This project is a collaborative effort developed by Team EQI for the Fall 2024 semester as part of the CSCI 420 course. The primary focus of the course is to encourage collaboration, teamwork, and the principles of software development in a group setting. Throughout the semester, the team will work together to design, build, and refine a functional software program.
+
+Our project aims to showcase the collective skills of the team by integrating individual contributions into a cohesive system. By leveraging version control, effective communication, and shared responsibility, this project emphasizes the importance of collaboration in modern software development. The program's final product will demonstrate core programming concepts while fostering an environment of continuous learning and teamwork.
 
 ## Instructions
 
@@ -69,7 +71,7 @@ Clone the project repository from GitHub to your local machine using the appropr
 - **macOS and Linux:** 
   ```bash
   python3 test_runner.py
-  
+
 ## Note:
 
 - **If you want to run the program using Visual Studio Code:**
