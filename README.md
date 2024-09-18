@@ -60,13 +60,6 @@ Clone the project repository from GitHub to your local machine using the appropr
   ```bash
   python3 build.py
 
-## Note:
-
-- **If you run the program using Visual Studio Code:**
-    - 1 - Follow step 2 in the instruction on VSCode terminal
-    - 2 - Follow step 3 in the instruction on VSCode terminal or 
-open **build.py** file, then hit the run button.
-
 ## Unit Tests:
 - **After finishing step 2 in the instructions, type the command below:**
 - **Windows (Powershell):**  
@@ -76,4 +69,17 @@ open **build.py** file, then hit the run button.
 - **macOS and Linux:** 
   ```bash
   python3 test_runner.py
-   
+  
+## Note:
+
+- **If you want to run the program using Visual Studio Code:**
+    - 1 - Open the program folder
+    - 2 - Follow step 2 in the instruction on VSCode terminal
+    - 3 - Follow step 3 in the instruction on VSCode terminal or 
+open **build.py** file, then hit the run button.
+
+- **If you want to run the test using Visual Studio Code:**
+    - 1 - Open the program folder
+    - 2 - Follow step 2 in the instruction on VSCode terminal
+    - 3 - Follow step 3 in the instruction on VSCode terminal or 
+open **test_runner.py** file, then hit the run button.
