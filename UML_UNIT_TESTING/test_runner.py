@@ -6,7 +6,7 @@ TEST_DIRECTORIES = {
     "Attribute Features": "Attribute_Features/uml_attr_test.py",
     "Class Features": "Class_Features/uml_class_test.py",
     "Relationship Features": "Relationship_Features/test_relationship.py",
-    "Formatting Validators": "Formating/test_validators.py"
+    "Formatting Validators": "Formatting/test_validators.py"
 }
 
 def display_test_options():
@@ -14,14 +14,17 @@ def display_test_options():
     print("\nAvailable Test Files:")
     for i, (key, value) in enumerate(TEST_DIRECTORIES.items(), start=1):
         print(f"{i}. {key} - ({value})")
-    print("0. Exit the test runner")
+    print("0. Run all tests")
+    print("-1. Exit the test runner")
 
 def get_user_choice():
     """Gets the user's choice for which test to run."""
     try:
-        choice = int(input("\nEnter the number of the test to run, or 0 to exit: "))
-        if choice == 0:
-            return None  # Exit the runner
+        choice = int(input("\nEnter the number of the test to run, 0 to run all tests, or -1 to exit: "))
+        if choice == -1:
+            return "exit"  # Exit the runner
+        elif choice == 0:
+            return None  # Run all tests
         elif 1 <= choice <= len(TEST_DIRECTORIES):
             selected_key = list(TEST_DIRECTORIES.keys())[choice - 1]
             return TEST_DIRECTORIES[selected_key]
@@ -48,7 +51,7 @@ if __name__ == "__main__":
     while True:
         display_test_options()
         test_path = get_user_choice()
-        if test_path is None:
-            print("Exiting the test runner. Goodbye!")
+        if test_path == "exit":
+            print("Exited the test runner!")
             break
         run_tests(test_path)
