@@ -15,7 +15,6 @@ from itertools import zip_longest
 
 import UML_CORE.UML_ATTRIBUTE.uml_attribute as UML_ATTRIBUTE
 import UML_CORE.UML_CLASS.uml_class as UML_CLASS
-import UML_CORE.UML_METHOD.uml_method as UML_METHOD
 import UML_CORE.UML_RELATIONSHIP.uml_relationship as UML_REL
 import UML_MANAGER.uml_manager as UML_MANAGER
 import UML_UTILITY.SAVE_LOAD.save_load as SAVE_LOAD
@@ -28,7 +27,6 @@ class InterfaceOptions(Enum):
     CLASS_REL = "class_rel"
     SAVE = "save"
     SORT = "sort"
-    SHOW_MENU = "show_menu"
     HELP = "help"
     EXIT = "exit"
 
@@ -40,12 +38,9 @@ class UMLClassInterfaceOption(Enum):
     ADD_ATTR = "add_attr"
     DELETE_ATTR = "delete_attr"
     RENAME_ATTR = "rename_attr"
-    ADD_METHOD = "add_method"
-    DELETE_METHOD = "delete_method"
-    RENAME_METHOD = "rename_method"
     ADD_REL = "add_rel"
     DELETE_REL = "delete_rel"
-    SHOW_MENU = "show_menu"
+    HELP = "help"
     BACK = "back"
 
 
@@ -57,7 +52,7 @@ def prompt_main_menu():
     print("Type 'class_rel' to see the relationships between class(es)")
     print("Type 'save' to save data")
     print("Type 'sort' to sort the class list in alphabetical order")
-    print("Type 'help' to see the menu again")
+    print("Type 'help' to see the instructions")
     print("Type 'exit' to quit program")
 
 
@@ -74,14 +69,6 @@ def prompt_working_menu():
     print(
         "Type 'rename_attr <class_name> <current_attribute_name> <new_name>' to rename an attribute"
     )
-    # Method
-    print("Type 'add_method <class_name> <method_name>' to add an method")
-    print(
-        "Type 'delete_method <class_name> <method_name>' to delete an method from the chosen class"
-    )
-    print(
-        "Type 'rename_method <class_name> <current_method_name> <new_name>' to rename method"
-    )
     # Relationship
     print(
         "Type 'add_rel <source_class> <destination_class_name> <relationship_level>' to add relationship and relationship level"
@@ -89,7 +76,7 @@ def prompt_working_menu():
     print(
         "Type 'delete_rel <chosen_class_name> <destination_class_name>' to delete a relationship"
     )
-    print("Type 'help' to see the menu again")
+    print("Type 'help' to see the instruction")
     print("Type 'back' to go back to main menu'")
 
 
@@ -151,31 +138,6 @@ def working_loop():
 
         #######################################################
 
-        # Add method
-        elif (
-            command == UMLClassInterfaceOption.ADD_METHOD.value
-            and first_param
-            and second_param
-        ):
-            UML_METHOD.add_method(first_param, second_param)
-        # Delete attribute
-        elif (
-            command == UMLClassInterfaceOption.DELETE_METHOD.value
-            and first_param
-            and second_param
-        ):
-            UML_METHOD.delete_method(first_param, second_param)
-        # Rename attribute
-        elif (
-            command == UMLClassInterfaceOption.RENAME_METHOD.value
-            and first_param
-            and second_param
-            and third_param
-        ):
-            UML_METHOD.rename_method(first_param, second_param, third_param)
-
-        #######################################################
-
         # Add relationship
         elif (
             command == UMLClassInterfaceOption.ADD_REL.value
@@ -194,7 +156,7 @@ def working_loop():
 
         #######################################################
         # See menu again
-        elif command == UMLClassInterfaceOption.SHOW_MENU.value:
+        elif command == UMLClassInterfaceOption.HELP.value:
             prompt_working_menu()
         #######################################################
         # Go back to main menu
@@ -234,18 +196,15 @@ def main_program_loop():
         # Show the relationship of the chosen class with others
         elif command == InterfaceOptions.CLASS_REL.value:
             display_relationship_list()
-        # Show the instructions for this program
+        # Show the main menu again
         elif command == InterfaceOptions.HELP.value:
-            help()
+            prompt_main_menu()
         # Sort the class list
         elif command == InterfaceOptions.SORT.value:
             sort_class_list()
         # Save the data
         elif command == InterfaceOptions.SAVE.value:
             SAVE_LOAD.save_data_from_json(UML_CLASS.data_list, "data.json")
-        # Show the main menu again
-        elif command == UMLClassInterfaceOption.SHOW_MENU.value:
-            prompt_main_menu()
         # Exit the program
         elif command == InterfaceOptions.EXIT.value:
             break
@@ -318,21 +277,12 @@ def get_class_detail(class_name: str) -> str:
     output.append(f"{"--     Name     --":^21}")
     output.append(f"{class_object['class_name']:^20}")
     output.append("|*******************|")
-    # Attribute
     attr_list = class_object["attr_list"]
     output.append(f"{"--  Attribute  --":^21}")
     for element in attr_list:
         for key, val in element.items():
             output.append(f"{val:^20}")
-    # Method
     output.append("|*******************|")
-    method_list = class_object["method_list"]
-    output.append(f"{"--   Method   --":^21}")
-    for element in method_list:
-        for key, val in element.items():
-            output.append(f"{"val":^20}")
-    output.append("|*******************|")
-    # Relationship
     rel_list = UML_MANAGER.relationship_list
     output.append(f"{"-- Relationship  --":^21}")
     for element in rel_list:
@@ -392,10 +342,6 @@ def ask_user_display_class_list() -> bool:
             return False
         else:
             print("Invalid input. Please enter 'Yes' or 'No'.")
-
-
-def help():
-    print("Inside help\n")
 
 
 def exit():
