@@ -17,8 +17,9 @@ A project developed by team EQI for the 2024 Fall semester course.
   - [Step 1: Clone the Repository](#step-1-clone-the-repository)
   - [Step 2: Set Up a Virtual Environment](#step-2-set-up-a-virtual-environment)
   - [Step 3: Run the Build Script](#step-3-run-the-build-script)
-- [Note](#note)
 - [Unit Tests](#unit-tests)
+- [Note](#note)
+
 ## Introduction
 
 This project is a collaborative effort developed by Team EQI for the Fall 2024 semester as part of the CSCI 420 course. The primary focus of the course is to encourage collaboration, teamwork, and the principles of software development in a group setting. Throughout the semester, the team will work together to design, build, and refine a functional software program.
