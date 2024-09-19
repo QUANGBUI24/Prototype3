@@ -16,18 +16,15 @@ List of last date modified:
 # IMPORTED MODULES #
 
 import UML_UTILITY.SAVE_LOAD.save_load as SAVE_LOAD
+import importlib
 
 ################################################################
-
+# LOADING SAVED FILE'S NAMES FROM JSON FILE TO GLOBAL LIST #
+saved_file_name_list = SAVE_LOAD.load_name()
 # LOADING DATA FROM JSON FILE TO GLOBAL DICTIONARY #
-data_list = SAVE_LOAD.load_data_from_json("data.json")
+data_list = [[], []]
 # Create a class so that we can display it or sort it alphabetically easily
 class_list: list[str] = []
-# If there is no data in json file
-# Provides an empty list if "classes" key is missing
-if data_list is None:
-    data_list = [[], []]
-
 # Get list of classes and its attributes
 class_and_attr_list = data_list[0]
 # Get list of relationships
@@ -35,3 +32,15 @@ relationship_list = data_list[1]
 # Add class name to class_list
 for dictionary in class_and_attr_list:
     class_list.append(dictionary["class_name"])
+
+
+def update_data(new_data_list: list):
+    global data_list, class_list, class_and_attr_list, relationship_list, class_list
+    data_list = new_data_list
+    class_and_attr_list = data_list[0]
+    relationship_list = data_list[1]
+    class_list.clear()
+    for dictionary in class_and_attr_list:
+         class_list.append(dictionary["class_name"])
+         
+         
