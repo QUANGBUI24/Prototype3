@@ -52,7 +52,6 @@ def save_data_to_json(data: dict[str, list[str]], file_name: str):
         if file_name in saved_file_name_list:
             with open(file_path, "r") as file:
                 data = json.load(file)
-                data.update(data_list)
                 return
         with open(file_path, "w") as file:
             json.dump(data, file, indent=4)

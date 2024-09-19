@@ -369,7 +369,7 @@ def ask_user_display_class_list() -> bool:
 
 
 # Asking users to provide name for the file they want to save
-def get_file_path() -> str | None:
+def get_file_path() -> str:
     print("Please provide a name for the file you'd like to save:")
     file_name = input()
     name_list = UML_MANAGER.saved_file_name_list
@@ -414,16 +414,17 @@ def sort_class_list():
 
 # Updating The Data #
 def keep_updating_data():
+    # Update the UML_CLASS
     UML_CLASS.data_list = UML_MANAGER.data_list
     UML_CLASS.class_and_attr_list = UML_MANAGER.class_and_attr_list
     UML_CLASS.relationship_list = UML_MANAGER.relationship_list
     UML_CLASS.class_list = UML_MANAGER.class_list
-    
+    # Update the UML_ATTRIBUTE
     UML_ATTRIBUTE.data_list = UML_MANAGER.data_list
     UML_ATTRIBUTE.class_and_attr_list = UML_MANAGER.class_and_attr_list
     UML_ATTRIBUTE.relationship_list = UML_MANAGER.relationship_list
     UML_ATTRIBUTE.class_list = UML_MANAGER.class_list
-    
+    # Update the UML_RELATIONSHIP
     UML_REL.data_list = UML_MANAGER.data_list
     UML_REL.class_and_attr_list = UML_MANAGER.class_and_attr_list
     UML_REL.relationship_list = UML_MANAGER.relationship_list
