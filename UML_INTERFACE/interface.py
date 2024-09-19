@@ -353,11 +353,6 @@ temp_saved_file_list: list[str] = []
 def get_file_path() -> str | None:
     print("Please provide a name for the file you'd like to save:")
     file_name = input()
-    class_name_result = FORMAT.check_format(file_name)
-    if class_name_result != "Valid input":
-        # If not valid, prompt error and return None
-        print(class_name_result)
-        return None
     temp_saved_file_list.append(file_name)
     return f"UML_UTILITY/SAVE_LOAD/SAVED_FILES/{file_name}.json"
     
