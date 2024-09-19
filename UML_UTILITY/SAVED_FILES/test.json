@@ -17,6 +17,10 @@
             ],
             "method_list": [],
             "class_name": "person"
+        },
+        {
+            "attr_list": [],
+            "class_name": "dog"
         }
     ],
     []
