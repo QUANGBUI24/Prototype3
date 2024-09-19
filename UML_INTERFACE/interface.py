@@ -347,16 +347,21 @@ def ask_user_display_class_list() -> bool:
         else:
             print("Invalid input. Please enter 'Yes' or 'No'.")
 
-temp_saved_file_list: list[str] = []
-
 # Asking users to provide name for the file they want to save
 def get_file_path() -> str | None:
     print("Please provide a name for the file you'd like to save:")
     file_name = input()
-    temp_saved_file_list.append(file_name)
+    is_name_exist = saved_file_name_check(file_name)
+    if not is_name_exist:
+        print(f"File name '{file_name}' has already existed!")
+        return None
+    UML_MANAGER.saved_file_name_list.append(file_name)
     return f"UML_UTILITY/SAVE_LOAD/SAVED_FILES/{file_name}.json"
-    
 
+# Saved file name check
+def saved_file_name_check(save_file_name: str) -> bool:
+    return save_file_name in  UML_MANAGER.saved_file_name_list
+    
 def exit():
     print("Exited Program")
 

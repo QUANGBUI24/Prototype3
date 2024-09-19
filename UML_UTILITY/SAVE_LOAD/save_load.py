@@ -11,7 +11,7 @@ List of last date modified:
 """
 
 import json
-
+import os
 
 # Save data to the JSON file
 def save_data_to_json(data: dict[str, list[str]], file_path: str):
@@ -32,6 +32,10 @@ def save_data_to_json(data: dict[str, list[str]], file_path: str):
 # Load data from the JSON file
 def load_data_from_json(file_path):
     try:
+        # Check if file is empty
+        if os.stat(file_path).st_size == 0:
+            return [[], []]
+        
         with open(file_path, "r") as file:
             data = json.load(file)
             return data
@@ -59,6 +63,10 @@ def save_name(name_list: list[str]):
 def load_name():
     file_path = "UML_UTILITY/SAVE_LOAD/SAVED_FILES/NAME_LIST.json"
     try:
+        # Check if file is empty
+        if os.stat(file_path).st_size == 0:
+            return []
+        # Load data from JSON
         with open(file_path, "r") as file:
             data = json.load(file)
             return data
