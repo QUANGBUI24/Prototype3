@@ -18,6 +18,7 @@ import UML_CORE.UML_CLASS.uml_class as UML_CLASS
 import UML_CORE.UML_RELATIONSHIP.uml_relationship as UML_REL
 import UML_MANAGER.uml_manager as UML_MANAGER
 import UML_UTILITY.SAVE_LOAD.save_load as SAVE_LOAD
+import UML_UTILITY.FORMAT_CHECKING.validators as FORMAT
 
 
 class InterfaceOptions(Enum):
@@ -204,7 +205,7 @@ def main_program_loop():
             sort_class_list()
         # Save the data
         elif command == InterfaceOptions.SAVE.value:
-            SAVE_LOAD.save_data_from_json(UML_CLASS.data_list, "data.json")
+            SAVE_LOAD.save_data_to_json(UML_MANAGER.data_list, get_file_path())
         # Exit the program
         elif command == InterfaceOptions.EXIT.value:
             break
@@ -216,7 +217,7 @@ def main_program_loop():
 
 
 ########################################################################################################
-# MAIN MENU #
+# DISPLAY METHODS #
 
 
 # Display Class List #
@@ -267,7 +268,19 @@ def display_relationship_list(classes_per_row=3):
 def display_single_class_detail(class_name: str):
     classes_detail_list = get_class_detail(class_name)
     print(f"\n{classes_detail_list}")
-
+    
+# Display only list of class names
+def display_list_of_only_class_name():
+    print("\n|===================|")
+    print(f"{"--     Name     --":^20}")
+    print("|*******************|")
+    class_list = UML_MANAGER.class_list
+    for class_name in class_list:
+        print(f"{class_name:^20}")
+    print("|===================|")
+    
+########################################################################################################
+# GET DETAILS METHODS #
 
 # Class Detail As String #
 def get_class_detail(class_name: str) -> str:
@@ -318,17 +331,8 @@ def get_relationship_detail(class_name: str) -> str:
     output.append("|===================|")
     return "\n".join(output)
 
-
-# Print only list of class names
-def display_list_of_only_class_name():
-    print("\n|===================|")
-    print(f"{"--     Name     --":^20}")
-    print("|*******************|")
-    class_list = UML_MANAGER.class_list
-    for class_name in class_list:
-        print(f"{class_name:^20}")
-    print("|===================|")
-
+########################################################################################################
+# OTHER HELPER METHODS #
 
 # Asking if user want to print list of all class names or list of all class details
 def ask_user_display_class_list() -> bool:
@@ -343,6 +347,20 @@ def ask_user_display_class_list() -> bool:
         else:
             print("Invalid input. Please enter 'Yes' or 'No'.")
 
+temp_saved_file_list: list[str] = []
+
+# Asking users to provide name for the file they want to save
+def get_file_path() -> str | None:
+    print("Please provide a name for the file you'd like to save:")
+    file_name = input()
+    class_name_result = FORMAT.check_format(file_name)
+    if class_name_result != "Valid input":
+        # If not valid, prompt error and return None
+        print(class_name_result)
+        return None
+    temp_saved_file_list.append(file_name)
+    return f"UML_UTILITY/SAVE_LOAD/SAVED_FILES/{file_name}.json"
+    
 
 def exit():
     print("Exited Program")
@@ -352,3 +370,5 @@ def exit():
 def sort_class_list():
     UML_CLASS.class_list.sort()
     display_class_list_detail()
+    
+########################################################################################################
