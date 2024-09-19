@@ -1,4 +1,11 @@
 [
-    "test",
-    "data"
+    {
+        "test": "off"
+    },
+    {
+        "data": "off"
+    },
+    {
+        "test2": "on"
+    }
 ]
