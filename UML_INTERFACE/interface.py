@@ -365,7 +365,6 @@ def get_file_path() -> str | None:
 def exit():
     print("Exited Program")
 
-
 # Sorting Class List #
 def sort_class_list():
     UML_CLASS.class_list.sort()
