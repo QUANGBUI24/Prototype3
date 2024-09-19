@@ -18,7 +18,6 @@ import UML_CORE.UML_CLASS.uml_class as UML_CLASS
 import UML_CORE.UML_RELATIONSHIP.uml_relationship as UML_REL
 import UML_MANAGER.uml_manager as UML_MANAGER
 import UML_UTILITY.SAVE_LOAD.save_load as SAVE_LOAD
-import UML_UTILITY.FORMAT_CHECKING.validators as FORMAT
 
 
 class InterfaceOptions(Enum):
@@ -27,6 +26,7 @@ class InterfaceOptions(Enum):
     CLASS_DETAIL = "class_detail"
     CLASS_REL = "class_rel"
     SAVE = "save"
+    LOAD = "load"
     SORT = "sort"
     HELP = "help"
     EXIT = "exit"
@@ -52,6 +52,7 @@ def prompt_main_menu():
     print("Type 'class_detail <class_name>' to see the detail of the chosen class")
     print("Type 'class_rel' to see the relationships between class(es)")
     print("Type 'save' to save data")
+    print("Type 'load' to load data from saved files")
     print("Type 'sort' to sort the class list in alphabetical order")
     print("Type 'help' to see the instructions")
     print("Type 'exit' to quit program")
@@ -206,6 +207,9 @@ def main_program_loop():
         # Save the data
         elif command == InterfaceOptions.SAVE.value:
             SAVE_LOAD.save_data_to_json(UML_MANAGER.data_list, get_file_path())
+        # Load the data
+        elif command == InterfaceOptions.LOAD.value:
+            loading_file_wrapper()
         # Exit the program
         elif command == InterfaceOptions.EXIT.value:
             break
@@ -263,13 +267,12 @@ def display_relationship_list(classes_per_row=3):
             "\n-------------------------------------------------------------------------------------------------\n"
         )
 
-
 # Display Class Details #
 def display_single_class_detail(class_name: str):
     classes_detail_list = get_class_detail(class_name)
     print(f"\n{classes_detail_list}")
     
-# Display only list of class names
+# Display only list of class names #
 def display_list_of_only_class_name():
     print("\n|===================|")
     print(f"{"--     Name     --":^20}")
@@ -278,6 +281,13 @@ def display_list_of_only_class_name():
     for class_name in class_list:
         print(f"{class_name:^20}")
     print("|===================|")
+    
+# Display saved file's names #
+def display_saved_file_name():
+    print("\n|===================|")
+    for name in UML_MANAGER.saved_file_name_list:
+        print(f"{name:^20}")
+    print("|===================|\n")
     
 ########################################################################################################
 # GET DETAILS METHODS #
@@ -351,16 +361,31 @@ def ask_user_display_class_list() -> bool:
 def get_file_path() -> str | None:
     print("Please provide a name for the file you'd like to save:")
     file_name = input()
+    name_list = UML_MANAGER.saved_file_name_list
+    name_list.append(file_name)
+    SAVE_LOAD.save_name_list(name_list)
+    return f"UML_UTILITY/SAVE_LOAD/SAVED_FILES/{file_name}.json"
+
+# Wrapper for loading function:
+def loading_file_wrapper():
+    if len(UML_MANAGER.saved_file_name_list) == 0:
+        print("No saved file exists!\n")
+        return
+    print("Please choose the file you want to load:")
+    display_saved_file_name()
+    file_name = input()
     is_name_exist = saved_file_name_check(file_name)
     if not is_name_exist:
-        print(f"File name '{file_name}' has already existed!")
-        return None
-    UML_MANAGER.saved_file_name_list.append(file_name)
-    return f"UML_UTILITY/SAVE_LOAD/SAVED_FILES/{file_name}.json"
+        print(f"File '{file_name}' does not exist")
+        return
+    UML_MANAGER.data_list = SAVE_LOAD.load_data_from_json(file_name)
+    if UML_MANAGER.data_list is not None:
+        print(f"Successfully loaded file '{file_name}'")
+    
 
 # Saved file name check
 def saved_file_name_check(save_file_name: str) -> bool:
-    return save_file_name in  UML_MANAGER.saved_file_name_list
+    return save_file_name in UML_MANAGER.saved_file_name_list
     
 def exit():
     print("Exited Program")

@@ -21,7 +21,7 @@ import UML_UTILITY.SAVE_LOAD.save_load as SAVE_LOAD
 # LOADING SAVED FILE'S NAMES FROM JSON FILE TO GLOBAL LIST #
 saved_file_name_list = SAVE_LOAD.load_name()
 # LOADING DATA FROM JSON FILE TO GLOBAL DICTIONARY #
-data_list = SAVE_LOAD.load_data_from_json("data.json")
+data_list = [[],[]]
 # Create a class so that we can display it or sort it alphabetically easily
 class_list: list[str] = []
 # Get list of classes and its attributes
