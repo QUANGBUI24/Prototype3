@@ -365,7 +365,7 @@ def get_relationship_detail(class_name: str) -> str:
 
 
 ########################################################################################################
-# OTHER HELPER METHODS #
+# SAVE/LOAD RELATED METHODS #
 
 
 # Wrapper for loading function:
@@ -443,6 +443,8 @@ def get_file_name_to_delete_or_load() -> str:
 def saved_file_name_check(save_file_name: str) -> bool:
     return save_file_name in UML_MANAGER.saved_file_name_list
 
+########################################################################################################
+# OTHER METHODS #
 
 def exit():
     print("Exited Program")
