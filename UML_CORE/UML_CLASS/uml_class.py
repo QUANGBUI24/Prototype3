@@ -171,6 +171,7 @@ def get_chosen_class(class_name: str) -> dict[str, list[dict[str, str]]]:
     for dictionary in class_and_attr_list:
         if dictionary["class_name"] == class_name:
             return dictionary
+    return None
 
 
 # User Decision Making #
