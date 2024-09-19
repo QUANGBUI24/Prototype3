@@ -206,7 +206,7 @@ def main_program_loop():
             sort_class_list()
         # Save the data
         elif command == InterfaceOptions.SAVE.value:
-            SAVE_LOAD.save_data_to_json(UML_MANAGER.data_list, get_file_path())
+            UML_MANAGER.save_data_to_json(UML_MANAGER.data_list, get_file_path())
         # Load the data
         elif command == InterfaceOptions.LOAD.value:
             loading_file_wrapper()
@@ -375,7 +375,7 @@ def get_file_path() -> str | None:
     name_list = UML_MANAGER.saved_file_name_list
     name_list.append(file_name)
     SAVE_LOAD.save_name_list(name_list)
-    return f"UML_UTILITY/SAVE_LOAD/SAVED_FILES/{file_name}.json"
+    return file_name
 
 
 # Wrapper for loading function:
@@ -418,6 +418,16 @@ def keep_updating_data():
     UML_CLASS.class_and_attr_list = UML_MANAGER.class_and_attr_list
     UML_CLASS.relationship_list = UML_MANAGER.relationship_list
     UML_CLASS.class_list = UML_MANAGER.class_list
+    
+    UML_ATTRIBUTE.data_list = UML_MANAGER.data_list
+    UML_ATTRIBUTE.class_and_attr_list = UML_MANAGER.class_and_attr_list
+    UML_ATTRIBUTE.relationship_list = UML_MANAGER.relationship_list
+    UML_ATTRIBUTE.class_list = UML_MANAGER.class_list
+    
+    UML_REL.data_list = UML_MANAGER.data_list
+    UML_REL.class_and_attr_list = UML_MANAGER.class_and_attr_list
+    UML_REL.relationship_list = UML_MANAGER.relationship_list
+    UML_REL.class_list = UML_MANAGER.class_list
 
 
 ########################################################################################################

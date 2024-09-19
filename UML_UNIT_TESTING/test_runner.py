@@ -100,7 +100,7 @@ def get_user_choice():
         return get_user_choice()
 
 if __name__ == "__main__":
-    check_python_version()
+    # check_python_version()
     activate_venv()
 
     while True:
