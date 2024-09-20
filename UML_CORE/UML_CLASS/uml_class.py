@@ -64,6 +64,7 @@ def delete_class(class_name: str):
     class_object = get_chosen_class(class_name)
     class_and_attr_list.remove(class_object)
     class_list.remove(class_name)
+    clean_up_relationship(class_name)
     print(f"Successfully removed class '{class_name}'!")
 
 
@@ -186,5 +187,12 @@ def user_choice(action: str) -> bool:
         else:
             print("Invalid input. Please enter 'Yes' or 'No'.")
 
+# Clean Up Relationship #
+def clean_up_relationship(class_name: str):
+    # Create a new list that excludes relationships with dest or source equal to class_name
+    relationship_list[:] = [relationship for relationship in relationship_list
+                            if relationship["dest"] != class_name and relationship["source"] != class_name]
+
+            
 
 ################################################################################

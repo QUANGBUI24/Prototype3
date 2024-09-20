@@ -66,6 +66,7 @@ def save_data_to_json(file_name: str):
             # If the file doesn't exist, create it and write the data list
             with open(file_path, "w") as json_file:
                 json.dump(data_list, json_file, indent=4)
+                print("Successfully saved data!")
                 return
         # If the file exists and the file name is in the saved list, update the data
         for dictionary in saved_file_name_list:

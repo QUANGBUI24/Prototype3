@@ -406,7 +406,7 @@ def loading_file_wrapper():
         check_file_and_set_status(file_name)
         UML_MANAGER.update_data(new_data_list)
         keep_updating_data()
-        print(f"Successfully loaded file '{file_name}'")
+        print(f"Successfully loaded file '{file_name}.json'")
         
 # Wrapper for Delete saved file
 def delete_saved_file_wrapper():
