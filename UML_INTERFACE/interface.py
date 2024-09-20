@@ -443,8 +443,11 @@ def delete_saved_file(file_name: str):
 
 # Asking users to provide name for the file they want to save
 def get_file_name_to_save() -> str:
-   # Prompt the user for a file name to save
-    file_name = input("\nPlease provide a name for the file you'd like to save or type 'quit' to go back to main menu:\n\n==> ")
+    # Prompt the user for a file name to save
+    print("\nPlease provide a name for the file you'd like to save or type 'quit' to go back to main menu:")
+    display_saved_file_name()
+    print("==>", end=" ")
+    file_name = input()
     # Get the saved file name list (which is now a list of dictionaries)
     name_list = UML_MANAGER.saved_file_name_list
     # Check if the file name already exists in any dictionary in the list
