@@ -68,17 +68,17 @@ def save_data_to_json(file_name: str):
                 json.dump(data_list, json_file, indent=4)
                 return
         # If the file exists and the file name is in the saved list, update the data
-        if file_name in saved_file_name_list:
-            # Open the file and load its current data
-            with open(file_path, "r") as file:
-                data = json.load(file)
-                # Overwrite the loaded data with the current data list
-                data = data_list
-            # Save the updated data to the file
-            with open(file_path, "w") as file:
-                json.dump(data, file, indent=4)
-            print("Successfully saved data!")
-
+        for dictionary in saved_file_name_list:
+            if file_name in dictionary:
+                # Open the file and load its current data
+                with open(file_path, "r") as file:
+                    data = json.load(file)
+                    # Overwrite the loaded data with the current data list
+                    data = data_list
+                # Save the updated data to the file
+                with open(file_path, "w") as file:
+                    json.dump(data, file, indent=4)
+                print("Successfully saved data!")
     except json.JSONDecodeError:
         # Handle JSON decoding errors (e.g., if the file is not in proper JSON format)
         print(f"Error decoding JSON from {file_path}.")

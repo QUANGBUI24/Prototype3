@@ -57,7 +57,7 @@ def prompt_main_menu():
     print("Type 'saved_list' to see the list of saved files")
     print("Type 'save' to save data")
     print("Type 'load' to load data from saved files")
-    print("Type 'delete_saved <saved_file_name> to delete the chosen saved file")
+    print("Type 'delete_saved to delete saved file")
     print("Type 'clear_data' to delete all the data in the current storage")
     print("Type 'sort' to sort the class list in alphabetical order")
     print("Type 'help' to see the instructions")
@@ -193,14 +193,7 @@ def main_program_loop():
             working_loop()
         # List all the created class names or all class detail
         elif command == InterfaceOptions.LIST_CLASS.value:
-            if len(UML_MANAGER.class_and_attr_list) == 0:
-                print("No class to display!")
-            else:
-                is_detail = ask_user_display_class_list()
-                if is_detail:
-                    display_class_list_detail()
-                else:
-                    display_list_of_only_class_name()
+            display_wrapper()
         # Show the details of the chosen class
         elif command == InterfaceOptions.CLASS_DETAIL.value and first_param:
             display_single_class_detail(first_param)
@@ -218,8 +211,7 @@ def main_program_loop():
             sort_class_list()
         # Save the data
         elif command == InterfaceOptions.SAVE.value:
-            file_name = get_file_name_to_save()
-            UML_MANAGER.save_data_to_json(file_name)
+            saving_file_wrapper()
         # Load the data
         elif command == InterfaceOptions.LOAD.value:
             loading_file_wrapper()
@@ -241,6 +233,17 @@ def main_program_loop():
 
 ########################################################################################################
 # DISPLAY METHODS #
+
+# Display wrapper function #
+def display_wrapper():
+    if len(UML_MANAGER.class_and_attr_list) == 0:
+        print("No class to display!")
+    else:
+        is_detail = ask_user_choices("print all class detail")
+        if is_detail:
+            display_class_list_detail()
+        else:
+            display_list_of_only_class_name()
 
 
 # Display only list of class names #
@@ -313,20 +316,6 @@ def display_saved_file_name():
     print("|===================|\n")
 
 
-# Asking if user want to print list of all class names or list of all class details
-def ask_user_display_class_list() -> bool:
-    while True:
-        user_input = input(
-            "\nDo you want to print all class detail? (Yes/No): "
-        ).lower()
-        if user_input in ["yes", "y"]:
-            return True
-        elif user_input in ["no", "n"]:
-            return False
-        else:
-            print("Invalid input. Please enter 'Yes' or 'No'.")
-
-
 ########################################################################################################
 # GET DETAILS METHODS #
 
@@ -387,8 +376,16 @@ def get_relationship_detail(class_name: str) -> str:
 ########################################################################################################
 # SAVE/LOAD RELATED METHODS #
 
+# Wrapper for saving function
+def saving_file_wrapper():
+    file_name = get_file_name_to_save()
+    is_saving = ask_user_choices(f"save data to file '{file_name}'")
+    if is_saving:
+        UML_MANAGER.save_data_to_json(file_name)
+    else:
+        print("Canceled saving!")
 
-# Wrapper for loading function:
+# Wrapper for loading function
 def loading_file_wrapper():
     file_name = get_file_name_to_delete_load_clear("load")
     is_name_exist = saved_file_name_check(file_name)
@@ -414,7 +411,9 @@ def delete_saved_file():
     if not is_name_exist:
         print(f"File '{file_name}.json' does not exist")
         return
-    name_list.remove(file_name)
+    for dictionary in name_list:
+        if file_name in dictionary:
+            name_list.remove(dictionary)
     file_path = f"UML_UTILITY/SAVED_FILES/{file_name}.json"
     UML_MANAGER.save_name_list(name_list)
     os.remove(file_path)
@@ -423,14 +422,17 @@ def delete_saved_file():
 
 # Asking users to provide name for the file they want to save
 def get_file_name_to_save() -> str:
-    print("\nPlease provide a name for the file you'd like to save:")
-    print("\n==>", end=" ")
-    file_name = input()
+   # Prompt the user for a file name to save
+    file_name = input("\nPlease provide a name for the file you'd like to save:\n\n==> ")
+    # Get the saved file name list (which is now a list of dictionaries)
     name_list = UML_MANAGER.saved_file_name_list
-    if file_name not in name_list:
+    # Check if the file name already exists in any dictionary in the list
+    file_exists = any(file_name in dictionary for dictionary in name_list)
+    # If the file name doesn't exist, add it to the list as a new dictionary
+    if not file_exists:
         name_list.append({file_name: "on"})
-    UML_MANAGER.save_name_list(name_list)
-    return file_name
+        UML_MANAGER.save_name_list(name_list)
+    return file_name  # Return the file name
 
 
 # Asking users to provide name for the file they want to delete, load or clear
@@ -457,8 +459,7 @@ def saved_file_name_check(save_file_name: str) -> bool:
 
 
 ########################################################################################################
-# OTHER METHODS #
-
+# SAVED FILES HELPER METHODS #
 
 def set_file_status(file_name: str, status: str):
     name_list = UML_MANAGER.saved_file_name_list
@@ -483,8 +484,7 @@ def set_all_file_off():
     name_list = UML_MANAGER.saved_file_name_list
     for dictionary in name_list:
         for key in dictionary:
-            if dictionary[key] == "on":
-                dictionary[key] = "off"
+            dictionary[key] = "off"
     UML_MANAGER.save_name_list(name_list)
 
 
@@ -503,6 +503,22 @@ def clear_current_data():
                 print(f"Successfully clear data in file '{key}'")
                 return
     print("No active file!")
+
+########################################################################################################
+# OTHER METHODS #
+
+# Asking if user choices
+def ask_user_choices(action: str) -> bool:
+    while True:
+        user_input = input(
+            f"\nDo you want to {action}? (Yes/No): "
+        ).lower()
+        if user_input in ["yes", "y"]:
+            return True
+        elif user_input in ["no", "n"]:
+            return False
+        else:
+            print("Invalid input. Please enter 'Yes' or 'No'.")
 
 
 def exit():
@@ -524,9 +540,7 @@ def keep_updating_data():
     UML_CLASS.relationship_list = UML_MANAGER.relationship_list
     UML_CLASS.class_list = UML_MANAGER.class_list
     # Update the UML_ATTRIBUTE
-    UML_ATTRIBUTE.data_list = UML_MANAGER.data_list
     UML_ATTRIBUTE.class_and_attr_list = UML_MANAGER.class_and_attr_list
-    UML_ATTRIBUTE.relationship_list = UML_MANAGER.relationship_list
     UML_ATTRIBUTE.class_list = UML_MANAGER.class_list
     # Update the UML_RELATIONSHIP
     UML_REL.data_list = UML_MANAGER.data_list
