@@ -217,7 +217,7 @@ def main_program_loop():
             loading_file_wrapper()
         # Delete saved file
         elif command == InterfaceOptions.DELETE_SAVED.value:
-            delete_saved_file()
+            delete_saved_file_wrapper()
         # Clear data in current storage
         elif command == InterfaceOptions.CLEAR_DATA.value:
             clear_current_data()
@@ -379,18 +379,27 @@ def get_relationship_detail(class_name: str) -> str:
 # Wrapper for saving function
 def saving_file_wrapper():
     file_name = get_file_name_to_save()
-    is_saving = ask_user_choices(f"save data to file '{file_name}'")
-    if is_saving:
-        UML_MANAGER.save_data_to_json(file_name)
-    else:
+    if file_name == "quit":
+        print()
+        prompt_main_menu()
+        return
+    is_saving = ask_user_choices(f"save data to file '{file_name}.json'")
+    if not is_saving:
         print("Canceled saving!")
+        return
+    UML_MANAGER.save_data_to_json(file_name)
+        
 
 # Wrapper for loading function
 def loading_file_wrapper():
     file_name = get_file_name_to_delete_load_clear("load")
-    is_name_exist = saved_file_name_check(file_name)
-    if not is_name_exist:
-        print(f"File '{file_name}' does not exist")
+    if file_name == "quit":
+        print()
+        prompt_main_menu()
+        return
+    is_loading = saved_file_name_check(file_name)
+    if not is_loading:
+        print(f"\nFile '{file_name}.json' does not exist")
         return
     new_data_list = UML_MANAGER.data_list = UML_MANAGER.load_data_from_json(file_name)
     if new_data_list is not None:
@@ -398,38 +407,50 @@ def loading_file_wrapper():
         UML_MANAGER.update_data(new_data_list)
         keep_updating_data()
         print(f"Successfully loaded file '{file_name}'")
-
-
-# Delete Saved File #
-def delete_saved_file():
-    # Get saved file's name
-    name_list = UML_MANAGER.saved_file_name_list
+        
+# Wrapper for Delete saved file
+def delete_saved_file_wrapper():
     # Provide saved file's name
     file_name = get_file_name_to_delete_load_clear("delete")
+    if file_name == "quit":
+        print()
+        prompt_main_menu()
+        return
     # Check if the name exists or not, if not, stop, else remove it
     is_name_exist = saved_file_name_check(file_name)
     if not is_name_exist:
-        print(f"File '{file_name}.json' does not exist")
+        print(f"\nFile '{file_name}.json' does not exist")
         return
+    is_delete_saved_file = ask_user_choices(f"delete saved file '{file_name}.json'")
+    if not is_delete_saved_file:
+        print("Canceled deleting!")
+        return
+    delete_saved_file(file_name)
+
+
+# Delete Saved File #
+def delete_saved_file(file_name: str):
+    # Get saved file's name list
+    name_list = UML_MANAGER.saved_file_name_list
     for dictionary in name_list:
         if file_name in dictionary:
             name_list.remove(dictionary)
     file_path = f"UML_UTILITY/SAVED_FILES/{file_name}.json"
     UML_MANAGER.save_name_list(name_list)
     os.remove(file_path)
-    print(f"Successfully removed file '{file_name}.json'")
+    print(f"\nSuccessfully removed file '{file_name}.json'")
 
 
 # Asking users to provide name for the file they want to save
 def get_file_name_to_save() -> str:
    # Prompt the user for a file name to save
-    file_name = input("\nPlease provide a name for the file you'd like to save:\n\n==> ")
+    file_name = input("\nPlease provide a name for the file you'd like to save or type 'quit' to go back to main menu:\n\n==> ")
     # Get the saved file name list (which is now a list of dictionaries)
     name_list = UML_MANAGER.saved_file_name_list
     # Check if the file name already exists in any dictionary in the list
     file_exists = any(file_name in dictionary for dictionary in name_list)
     # If the file name doesn't exist, add it to the list as a new dictionary
-    if not file_exists:
+    if not file_exists and file_name != "quit":
         name_list.append({file_name: "on"})
         UML_MANAGER.save_name_list(name_list)
     return file_name  # Return the file name
@@ -441,7 +462,7 @@ def get_file_name_to_delete_load_clear(place_holder: str) -> str:
     if len(name_list) == 0:
         print("No saved file exists!\n")
         return
-    print(f"Please choose the file you want to {place_holder}:")
+    print(f"\nPlease choose the file you want to {place_holder} or type 'quit' to go back to menu:")
     display_saved_file_name()
     print("\n==>", end=" ")
     file_name = input()
