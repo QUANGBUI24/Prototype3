@@ -7,6 +7,7 @@ Description:
 
 List of date modified:
 - September 15, 2024 (By Quang)
+- September 19, 2024 (By Quang)
 
 """
 
@@ -187,12 +188,15 @@ def user_choice(action: str) -> bool:
         else:
             print("Invalid input. Please enter 'Yes' or 'No'.")
 
+
 # Clean Up Relationship #
 def clean_up_relationship(class_name: str):
     # Create a new list that excludes relationships with dest or source equal to class_name
-    relationship_list[:] = [relationship for relationship in relationship_list
-                            if relationship["dest"] != class_name and relationship["source"] != class_name]
+    relationship_list[:] = [
+        relationship
+        for relationship in relationship_list
+        if relationship["dest"] != class_name and relationship["source"] != class_name
+    ]
 
-            
 
 ################################################################################

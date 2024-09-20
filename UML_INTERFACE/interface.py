@@ -7,6 +7,7 @@ Description:
 
 List of last date modified:
 - September 15, 2024 (By Quang)
+- September 19, 2024 (By Quang)
 
 """
 
@@ -234,6 +235,7 @@ def main_program_loop():
 ########################################################################################################
 # DISPLAY METHODS #
 
+
 # Display wrapper function #
 def display_wrapper():
     if len(UML_MANAGER.class_and_attr_list) == 0:
@@ -376,6 +378,7 @@ def get_relationship_detail(class_name: str) -> str:
 ########################################################################################################
 # SAVE/LOAD RELATED METHODS #
 
+
 # Wrapper for saving function
 def saving_file_wrapper():
     file_name = get_file_name_to_save()
@@ -388,7 +391,7 @@ def saving_file_wrapper():
         print("Canceled saving!")
         return
     UML_MANAGER.save_data_to_json(file_name)
-        
+
 
 # Wrapper for loading function
 def loading_file_wrapper():
@@ -407,7 +410,8 @@ def loading_file_wrapper():
         UML_MANAGER.update_data(new_data_list)
         keep_updating_data()
         print(f"Successfully loaded file '{file_name}.json'")
-        
+
+
 # Wrapper for Delete saved file
 def delete_saved_file_wrapper():
     # Provide saved file's name
@@ -444,7 +448,9 @@ def delete_saved_file(file_name: str):
 # Asking users to provide name for the file they want to save
 def get_file_name_to_save() -> str:
     # Prompt the user for a file name to save
-    print("\nPlease provide a name for the file you'd like to save or type 'quit' to go back to main menu:")
+    print(
+        "\nPlease provide a name for the file you'd like to save or type 'quit' to go back to main menu:"
+    )
     display_saved_file_name()
     print("==>", end=" ")
     file_name = input()
@@ -465,7 +471,9 @@ def get_file_name_to_delete_load_clear(place_holder: str) -> str:
     if len(name_list) == 0:
         print("No saved file exists!\n")
         return
-    print(f"\nPlease choose the file you want to {place_holder} or type 'quit' to go back to menu:")
+    print(
+        f"\nPlease choose the file you want to {place_holder} or type 'quit' to go back to menu:"
+    )
     display_saved_file_name()
     print("\n==>", end=" ")
     file_name = input()
@@ -484,6 +492,7 @@ def saved_file_name_check(save_file_name: str) -> bool:
 
 ########################################################################################################
 # SAVED FILES HELPER METHODS #
+
 
 def set_file_status(file_name: str, status: str):
     name_list = UML_MANAGER.saved_file_name_list
@@ -528,15 +537,15 @@ def clear_current_data():
                 return
     print("No active file!")
 
+
 ########################################################################################################
 # OTHER METHODS #
+
 
 # Asking if user choices
 def ask_user_choices(action: str) -> bool:
     while True:
-        user_input = input(
-            f"\nDo you want to {action}? (Yes/No): "
-        ).lower()
+        user_input = input(f"\nDo you want to {action}? (Yes/No): ").lower()
         if user_input in ["yes", "y"]:
             return True
         elif user_input in ["no", "n"]:
