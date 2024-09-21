@@ -1,3 +1,15 @@
+"""
+Author : Quang Bui
+Created: September 12, 2024
+
+Description:
+    This shell has UML class features
+
+List of date modified:
+- September 18, 2024 (By Quang)
+
+"""
+
 import os
 import sys
 import unittest
