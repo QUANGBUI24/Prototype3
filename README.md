@@ -67,11 +67,11 @@ Clone the project repository from GitHub to your local machine using the appropr
 - **After finishing step 2 in the instructions, type the command below:**
 - **Windows (Powershell):**  
   ```bash
-  python test_runner.py
+  python UML_UNIT_TESTING\test_runner.py 
 
 - **macOS and Linux:** 
   ```bash
-  python3 test_runner.py
+  python3 UML_UNIT_TESTING\test_runner.py 
 
 ## Note:
 
