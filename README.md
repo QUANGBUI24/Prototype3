@@ -71,7 +71,7 @@ Clone the project repository from GitHub to your local machine using the appropr
 
 - **macOS and Linux:** 
   ```bash
-  python3 UML_UNIT_TESTING\test_runner.py 
+  python3 UML_UNIT_TESTING/test_runner.py
 
 ## Note:
 
