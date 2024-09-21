@@ -88,5 +88,5 @@ open **build.py** file, then hit the run button
 open **test_runner.py** file, then hit the run button
 
 - **If you have crash or unexpected program termination, it will disrupt the active status, below is the solution to fix it:**
-    - 1 - When you open the program again, type command **default** and it will set all the status to off without exiting the program
+    - 1 - When you open the program again, type command **default** and it will set all the file status to **off** without exiting the program
     - 2 - Start working as usual
