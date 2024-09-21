@@ -10,5 +10,8 @@
     },
     {
         "data_clone": "off"
+    },
+    {
+        "test02": "off"
     }
 ]
