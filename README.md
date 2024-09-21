@@ -28,8 +28,8 @@ This project is a collaborative effort developed by Team EQI for the Fall 2024 s
 Our project aims to showcase the collective skills of the team by integrating individual contributions into a cohesive system. By leveraging version control, effective communication, and shared responsibility, this project emphasizes the importance of collaboration in modern software development. The program's final product will demonstrate core programming concepts while fostering an environment of continuous learning and teamwork.
 ## Requirements
 
-To ensure compatibility, the Python version must be **3.12.x** (where 'x' can be any sub-version). You can download and install the latest version of Python 3.12 from the official website here [Download Python 3.12](https://www.python.org/downloads/)
-. Please make sure to update your environment accordingly.
+To ensure compatibility, the Python version must be **3.12.x** (where 'x' can be any sub-version). You can download and install the latest version of Python 3.12 from the official website here [Download Python 3.12](https://www.python.org/downloads/). 
+Please make sure to update your environment accordingly.
 
 ## Instructions
 
@@ -41,11 +41,11 @@ Clone the project repository from GitHub to your local machine using the appropr
 
 - **Windows (Powershell):**    
   ```bash
-  git clone https://github.com/mucsci-students/2024fa-420-EQI.git; cd 2024fa-420-EQI
+  git clone https://github.com/QUANGBUI24/Prototype3.git; cd Prototype3
 
 - **macOS and Linux:**
   ```bash
-  git clone https://github.com/mucsci-students/2024fa-420-EQI.git && cd 2024fa-420-EQI
+  git clone https://github.com/QUANGBUI24/Prototype3.git && cd Prototype3
  
 ### Step 2: Set Up a Virtual Environment
 
