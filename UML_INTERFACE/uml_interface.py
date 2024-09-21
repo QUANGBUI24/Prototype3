@@ -20,7 +20,8 @@ import UML_MANAGER.uml_manager as UML_MANAGER
 def working_loop():
     UML_MANAGER.prompt_working_menu()
     while True:
-        print("\n(work-menu)\n")
+        current_active_file: str = UML_MANAGER.get_active_file()
+        print(f"\n(Work-Menu) - (Current active file: {current_active_file})\n")
         print("\n==> ", end="")
         user_input: str = input()
         # Split the input by space
@@ -109,7 +110,8 @@ def working_loop():
 def main_program_loop():
     UML_MANAGER.prompt_main_menu()
     while True:
-        print("\n(main-menu)\n")
+        current_active_file: str = UML_MANAGER.get_active_file()
+        print(f"\n(Main-Menu) - (Current active file: {current_active_file})\n")
         print("\n==> ", end="")
         user_input: str = input()
         # Split the input by space

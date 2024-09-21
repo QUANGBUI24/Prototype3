@@ -418,8 +418,15 @@ def clear_current_data():
 ########################################################################################################
 # OTHER METHODS #
 
+# Get Active File #
+def get_active_file() -> str:
+    for dictionary in UML_STORAGE_MANAGER.saved_file_name_list:
+        for key, val in dictionary.items():
+            if dictionary[key] == "on":
+                return f"{key}.json"
+    return "No active file!"
 
-# Asking if user choices
+# Ask For User Choices #
 def ask_user_choices(action: str) -> bool:
     while True:
         user_input = input(f"\nDo you want to {action}? (Yes/No): ").lower()
