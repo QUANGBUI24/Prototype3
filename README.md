@@ -79,10 +79,14 @@ Clone the project repository from GitHub to your local machine using the appropr
     - 1 - Open the program folder
     - 2 - Follow step 2 in the instruction on VSCode terminal
     - 3 - Follow step 3 in the instruction on VSCode terminal or 
-open **build.py** file, then hit the run button.
+open **build.py** file, then hit the run button
 
 - **If you want to run the test using Visual Studio Code:**
     - 1 - Open the program folder
     - 2 - Follow step 2 in the instruction on VSCode terminal
     - 3 - Follow step 3 in the instruction on VSCode terminal or 
-open **test_runner.py** file, then hit the run button.
+open **test_runner.py** file, then hit the run button
+
+- **If you have crash or unexpected program termination, it will disrupt the active status, below is the solution to fix it:**
+    - 1 - When you open the program again, type command **default** and it will set all the status to off without exiting the program
+    - 2 - Start working as usual
