@@ -107,6 +107,11 @@ class UMLClassDiagram(QGraphicsView):
         for y in range(top - (top % self.grid_size), bottom, self.grid_size):
             painter.drawLine(left, y, right, y)
 
+    def mouseMoveEvent(self, event):
+        """Forces the view to update while dragging to avoid grid disappearing."""
+        super().mouseMoveEvent(event)
+        self.viewport().update()
+
     def resizeEvent(self, event):
         """Resize event to handle expanding the scene."""
         rect = self.mapToScene(self.rect()).boundingRect()
