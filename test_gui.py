@@ -43,6 +43,7 @@ class UMLClassDiagram(QGraphicsView):
         # Start with a default zoom level
         self.zoom_factor = 1.0
         self.grid_size = 20  # Define the grid size (spacing between lines)
+        self.selected_class = None  # Track the selected UML class item
 
         # Set the scene to a larger size initially
         self.scene.setSceneRect(-5000, -5000, 10000, 10000)
@@ -128,6 +129,21 @@ class UMLClassDiagram(QGraphicsView):
         new_height = current_rect.height() * 1.5
         self.scene.setSceneRect(current_rect.left(), current_rect.top(), new_width, new_height)
 
+    def mousePressEvent(self, event):
+        """Detects which class is clicked and sets it as the selected class."""
+        super().mousePressEvent(event)
+        item = self.itemAt(event.pos())
+        if isinstance(item, UMLClassItem):
+            self.selected_class = item
+        else:
+            self.selected_class = None
+
+    def delete_selected_class(self):
+        """Deletes the selected class from the scene."""
+        if self.selected_class:
+            self.scene.removeItem(self.selected_class)
+            self.selected_class = None
+
 class UMLWindow(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -144,6 +160,11 @@ class UMLWindow(QMainWindow):
         self.add_class_button.clicked.connect(self.add_class_to_diagram)
         layout.addWidget(self.add_class_button)
 
+        # Add button to delete the selected class
+        self.delete_class_button = QPushButton("Delete Selected Class")
+        self.delete_class_button.clicked.connect(self.delete_selected_class_from_diagram)
+        layout.addWidget(self.delete_class_button)
+
         # Add reset button to reset view
         self.reset_button = QPushButton("Reset View")
         self.reset_button.clicked.connect(self.reset_diagram_view)
@@ -156,6 +177,10 @@ class UMLWindow(QMainWindow):
     def add_class_to_diagram(self):
         # Call the method to add a UML class to the diagram
         self.uml_view.add_class()
+
+    def delete_selected_class_from_diagram(self):
+        # Call the method to delete the selected UML class
+        self.uml_view.delete_selected_class()
 
     def reset_diagram_view(self):
         # Call the method to reset the view
