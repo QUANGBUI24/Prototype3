@@ -62,7 +62,7 @@ def prompt_main_menu():
     print("Type 'saved_list' to see the list of saved files")
     print("Type 'save' to save data")
     print("Type 'load' to load data from saved files")
-    print("Type 'delete_saved to delete saved file")
+    print("Type 'delete_saved' to delete saved file")
     print("Type 'clear_data' to delete all the data in the current storage")
     print("Type 'default' to go back to blank program")
     print("Type 'sort' to sort the class list in alphabetical order")
@@ -458,6 +458,7 @@ def reset_storage():
 def end_session():
     set_all_file_off()
     reset_storage()
+    keep_updating_data()
     print("\nSuccessfully back to default program!")
 
 
