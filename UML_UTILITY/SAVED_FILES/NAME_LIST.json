@@ -1,17 +1,11 @@
 [
     {
-        "test": "off"
-    },
-    {
         "data": "off"
     },
     {
-        "project_1": "off"
+        "format": "off"
     },
     {
-        "test02": "off"
-    },
-    {
-        "data_clone": "off"
+        "test": "off"
     }
 ]
