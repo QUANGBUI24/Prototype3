@@ -1,8 +1,10 @@
-from UML_INTERFACE.uml_cli_interface import UMLCommandLineInterface as Interface  
+# MAIN PROGRAM #
+
+from UML_INTERFACE import uml_interface as INTERFACE
+
 
 def main():
-    program_interface = Interface()
-    program_interface.main_program_loop()
+    INTERFACE.main_program_loop()
 
 
 if __name__ == "__main__":
