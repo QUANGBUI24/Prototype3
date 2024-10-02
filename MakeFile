@@ -1,0 +1,25 @@
+# Define the virtual environment directory
+VENV_DIR = venv
+
+# Target to activate the virtual environment and install requirements
+install-deps:
+ifeq ($(OS),Windows_NT)
+	# Activate the virtual environment and install dependencies on Windows
+	@call $(VENV_DIR)\Scripts\activate && pip install -r requirements.txt
+else
+	# Activate the virtual environment and install dependencies on Unix-based systems
+	@source $(VENV_DIR)/bin/activate && pip install -r requirements.txt
+endif
+
+# Target to run the main Python program
+run:
+ifeq ($(OS),Windows_NT)
+	# Run the main program using the virtual environment's Python on Windows
+	@$(VENV_DIR)\Scripts\python main.py
+else
+	# Run the main program using the virtual environment's Python on Unix-based systems
+	@$(VENV_DIR)/bin/python main.py
+endif
+
+# Full process: activate the environment, install dependencies, and run the program
+all: install-deps run
